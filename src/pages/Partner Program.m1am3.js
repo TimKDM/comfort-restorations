@@ -1,36 +1,18 @@
-import { submitPartnerApplication } from 'backend/partnerSubmit.jsw';
+import wixWindow from 'wix-window';
 
 $w.onReady(function () {
-    $w('#html12').onMessage((event) => {
-        if (event.data && event.data.type === 'partnerApplication') {
-            const formData = event.data.data;
 
-            const record = {
-                title: formData.firstName + ' ' + formData.lastName,
-                firstName: formData.firstName,
-                lastName: formData.lastName,
-                companyName: formData.companyName || '',
-                applyingAs: formData.applyingAs,
-                phone: formData.phone,
-                email: formData.email,
-                address: formData.address || '',
-                industryYears: formData.industryYears,
-                authorized: formData.authorized,
-                understandW9: formData.understandW9,
-                exclusiveReferrals: formData.exclusiveReferrals,
-                monthlyCallVolume: formData.monthlyCallVolume,
-                onboardingAcknowledge: formData.onboardingAcknowledge,
-                submittedAt: new Date()
-            };
+    // ── Open the native "Partner Application" lightbox ──
+    // Attach this to every "Apply Now" button on the page.
+    // If your page only has one button, keep just the first line.
 
-            submitPartnerApplication(record)
-                .then(() => {
-                    $w('#html12').postMessage({ type: 'formResult', success: true });
-                })
-                .catch((err) => {
-                    console.error('Error saving partner application:', err);
-                    $w('#html12').postMessage({ type: 'formResult', success: false });
-                });
+    const applyButtons = ['#buttonApply', '#buttonApply2', '#buttonApply3'];
+
+    applyButtons.forEach((id) => {
+        if ($w(id)) {
+            $w(id).onClick(() => {
+                wixWindow.openLightbox('Partner Application');
+            });
         }
     });
 });
