@@ -6,6 +6,7 @@ $w.onReady(function () {
             const formData = event.data.data;
 
             const record = {
+                title: formData.firstName + ' ' + formData.lastName,
                 firstName: formData.firstName,
                 lastName: formData.lastName,
                 companyName: formData.companyName || '',
