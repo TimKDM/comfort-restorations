@@ -777,7 +777,7 @@
             </div>
             <div class="contact-item">
                 <div class="contact-label">Email</div>
-                <div class="contact-value"><a href="/cdn-cgi/l/email-protection#2f5f4e5d5b414a5d5c6f4c404249405d5b5d4a5c5b405d4e5b4640415c014c4042"><span class="__cf_email__" data-cfemail="cdbdacbfb9a3a8bfbe8daea2a0aba2bfb9bfa8beb9a2bfacb9a4a2a3bee3aea2a0">[email&#160;protected]</span></a></div>
+                <div class="contact-value"><a href="mailto:partners@comfortrestorations.com">partners&#64;comfortrestorations.com</a></div>
             </div>
             <div class="contact-item">
                 <div class="contact-label">Service Area</div>
@@ -799,53 +799,123 @@
         </div>
         <div class="modal-body">
             <form id="partnerApplicationForm" onsubmit="handleFormSubmit(event)">
+                <!-- Section 1: Personal Info -->
                 <div class="form-section">
                     <div class="form-section-title">
-                        <span class="form-section-number">1</span> Contact Information
-                    </div>
-                    <div class="form-group">
-                        <label for="fullName">Full Name <span class="required">*</span></label>
-                        <input type="text" id="fullName" name="fullName" required placeholder="John Smith">
+                        <span class="form-section-number">1</span> Personal Information
                     </div>
                     <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="firstName" required placeholder="John">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="lastName" required placeholder="Smith">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="companyName">Company Name</label>
+                        <input type="text" id="companyName" name="companyName" placeholder="ABC Plumbing LLC">
+                    </div>
+                    <div class="form-group">
+                        <label>Are you applying as: <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="applyingAs" value="Business Entity" required>
+                                Business Entity (LLC / Corporation / Sole Proprietor)
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="applyingAs" value="Individual 1099">
+                                Individual 1099 Referral Partner
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Contact Info -->
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <span class="form-section-number">2</span> Contact Information
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required placeholder="(719) 555-0100">
+                        </div>
                         <div class="form-group">
                             <label for="email">Email <span class="required">*</span></label>
                             <input type="email" id="email" name="email" required placeholder="john@example.com">
                         </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number <span class="required">*</span></label>
-                            <input type="tel" id="phone" name="phone" required placeholder="(719) 555-0100">
-                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" placeholder="123 Main St, Colorado Springs, CO 80903">
                     </div>
                 </div>
 
+                <!-- Section 3: Experience & Qualifications -->
                 <div class="form-section">
                     <div class="form-section-title">
-                        <span class="form-section-number">2</span> Company Details
+                        <span class="form-section-number">3</span> Experience & Qualifications
                     </div>
                     <div class="form-group">
-                        <label for="companyName">Company Name <span class="required">*</span></label>
-                        <input type="text" id="companyName" name="companyName" required placeholder="ABC Plumbing LLC">
+                        <label for="industryYears">How long have you been in the industry? <span class="required">*</span></label>
+                        <input type="text" id="industryYears" name="industryYears" required placeholder="e.g. 5 years">
                     </div>
                     <div class="form-group">
-                        <label for="position">Position <span class="required">*</span></label>
-                        <select id="position" name="position" required>
-                            <option value="" disabled selected>Select your role</option>
-                            <option value="Owner">Owner</option>
-                            <option value="Manager">Manager</option>
-                            <option value="Lead Technician">Lead Technician</option>
-                            <option value="Technician">Technician</option>
-                            <option value="Other">Other</option>
+                        <label>Are you authorized to refer restoration services on behalf of yourself or your company? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="authorized" value="Yes" required> Yes
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="authorized" value="No"> No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Do you understand this is a 1099 referral partner program and a W-9 will be required prior to payout? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="understandW9" value="Yes" required> Yes
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="understandW9" value="No"> No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Do you agree that referrals must be exclusive in order to qualify for compensation? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="exclusiveReferrals" value="Yes" required> Yes
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="exclusiveReferrals" value="No"> No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="monthlyCallVolume">Estimated number of insurance-related plumbing calls you handle per month <span class="required">*</span></label>
+                        <select id="monthlyCallVolume" name="monthlyCallVolume" required>
+                            <option value="" disabled selected>Select an estimate</option>
+                            <option value="1-5">1 - 5</option>
+                            <option value="6-10">6 - 10</option>
+                            <option value="11-20">11 - 20</option>
+                            <option value="21-50">21 - 50</option>
+                            <option value="50+">50+</option>
                         </select>
                     </div>
                 </div>
 
+                <!-- Section 4: Acknowledgment & Submit -->
                 <div class="form-section">
                     <div class="checkbox-group">
-                        <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
-                        <label for="agreeTerms">I agree to the <a href="https://0b5ede69-f747-4d23-bfff-5c32b2c63e71.usrfiles.com/ugd/0b5ede_9b57ba2b0c734e409efb36883b99fea7.pdf" target="_blank" style="color: var(--brand-gold);">Terms & Conditions</a> of the Preferred Partner Program.</label>
+                        <input type="checkbox" id="onboardingAcknowledge" name="onboardingAcknowledge" required>
+                        <label for="onboardingAcknowledge">I understand that referrals only qualify after official onboarding and written approval from Comfort Restorations.</label>
                     </div>
-                    <button type="submit" class="submit-btn">Submit Application</button>
+                    <button type="submit" class="submit-btn">Apply Now</button>
                     <p class="form-note">We review applications within 24-48 hours. You'll receive a call from our team.</p>
                 </div>
             </form>
@@ -922,12 +992,25 @@
         submitBtn.textContent = 'Submitting...';
 
         // Collect form data
+        var applyingAs = form.querySelector('input[name="applyingAs"]:checked');
+        var authorized = form.querySelector('input[name="authorized"]:checked');
+        var understandW9 = form.querySelector('input[name="understandW9"]:checked');
+        var exclusiveReferrals = form.querySelector('input[name="exclusiveReferrals"]:checked');
+
         var formData = {
-            fullName: form.fullName.value,
-            email: form.email.value,
-            phone: form.phone.value,
+            firstName: form.firstName.value,
+            lastName: form.lastName.value,
             companyName: form.companyName.value,
-            position: form.position.value
+            applyingAs: applyingAs ? applyingAs.value : '',
+            phone: form.phone.value,
+            email: form.email.value,
+            address: form.address.value,
+            industryYears: form.industryYears.value,
+            authorized: authorized ? authorized.value : '',
+            understandW9: understandW9 ? understandW9.value : '',
+            exclusiveReferrals: exclusiveReferrals ? exclusiveReferrals.value : '',
+            monthlyCallVolume: form.monthlyCallVolume.value,
+            onboardingAcknowledge: form.onboardingAcknowledge.checked
         };
 
         // Try to send via postMessage to Wix parent (if embedded)
