@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preferred Partner Program | Comfort Restorations Colorado Springs</title>
+    <meta name="description" content="Join Comfort Restorations' Preferred Partner Program. Earn $500 per closed job, free emergency cleanup, and compete for annual grand prizes up to $55K. Colorado Springs plumbers apply now.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            line-height: 1.6; 
+            color: #333;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        :root {
+            --brand-gold: #CFA054;
+            --brand-gold-light: #DAAD64;
+            --brand-gold-dark: #B8893D;
+            --brand-gold-glow: rgba(207, 160, 84, 0.15);
+            --brand-black: #1a1a1a;
+            --brand-black-light: #242424;
+            --text-dark: #2d2d2d;
+            --text-gray: #666;
+            --light-bg: #f5f5f3;
+            --white: #ffffff;
+        }
+        
+        /* ========== LAYOUT ========== */
+        .strip {
+            padding: 80px 40px;
+            width: 100%;
+        }
+        
+        .strip-content {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+        
+        .dark-strip { background: var(--brand-black); color: #fff; }
+        .dark-strip-alt { background: var(--brand-black-light); color: #fff; }
+        .light-strip { background: var(--light-bg); color: var(--text-dark); }
+        .white-strip { background: var(--white); color: var(--text-dark); }
+        
+        /* ========== TYPOGRAPHY ========== */
+        h1 { font-size: 48px; font-weight: 800; line-height: 1.15; margin-bottom: 20px; letter-spacing: -0.5px; }
+        h2 { font-size: 34px; font-weight: 700; margin-bottom: 15px; text-align: center; letter-spacing: -0.3px; }
+        h3 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+        p { font-size: 16px; margin-bottom: 15px; }
+        
+        .gold { color: var(--brand-gold); }
+        .subtitle { font-size: 20px; opacity: 0.85; margin-bottom: 30px; }
+        .section-intro { text-align: center; max-width: 600px; margin: 0 auto 50px; }
+        
+        /* ========== BUTTONS ========== */
+        .btn-gold {
+            display: inline-block;
+            background: var(--brand-gold);
+            color: var(--brand-black);
+            padding: 16px 44px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-gold:hover { 
+            background: var(--brand-gold-light); 
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(207, 160, 84, 0.3);
+        }
+        
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: var(--brand-gold);
+            padding: 14px 40px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 2px solid var(--brand-gold);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-outline:hover {
+            background: var(--brand-gold);
+            color: var(--brand-black);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(207, 160, 84, 0.15);
+            color: var(--brand-gold);
+            padding: 10px 25px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(207, 160, 84, 0.3);
+        }
+        
+        /* ========== GRIDS ========== */
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        
+        /* ========== HERO ========== */
+        .hero-strip {
+            background: var(--brand-black);
+            background-image: 
+                radial-gradient(ellipse at 50% -10%, rgba(207, 160, 84, 0.12) 0%, transparent 55%);
+            text-align: center;
+            padding: 90px 40px 70px;
+        }
+        .hero-strip h1 {
+            font-size: 44px;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+        .hero-strip .subtitle {
+            font-size: 19px;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 35px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        .hero-strip .btn-gold {
+            font-size: 16px;
+            padding: 18px 50px;
+        }
+        
+        .trust-row { display: flex; justify-content: center; gap: 35px; margin-top: 35px; font-size: 13px; color: rgba(255,255,255,0.45); letter-spacing: 0.5px; }
+        .trust-item { display: flex; align-items: center; gap: 8px; }
+        
+        /* ========== PRIZE CARDS - PODIUM ========== */
+        .prizes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr 1fr;
+            gap: 25px;
+            align-items: end;
+        }
+        
+        .prize-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(207, 160, 84, 0.2);
+            padding: 28px 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .prize-card:hover { border-color: rgba(207, 160, 84, 0.5); }
+        
+        .prize-card.featured {
+            border-color: var(--brand-gold);
+            background: rgba(207, 160, 84, 0.08);
+            padding: 35px 20px;
+            box-shadow: 0 0 40px rgba(207, 160, 84, 0.1);
+        }
+        
+        .prize-label {
+            color: var(--brand-gold);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .prize-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 18px;
+            border: 1px solid rgba(207, 160, 84, 0.15);
+            background: rgba(255,255,255,0.05);
+        }
+        .prize-card.featured .prize-image { 
+            height: 170px;
+            border-color: rgba(207, 160, 84, 0.3); 
+        }
+        .prize-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+        .prize-value { color: var(--brand-gold); font-size: 17px; font-weight: 700; }
+        
+        /* ========== MID-PAGE CTA ========== */
+        .cta-strip {
+            background: var(--brand-black-light);
+            text-align: center;
+            padding: 50px 40px;
+            border-top: 1px solid rgba(207, 160, 84, 0.1);
+            border-bottom: 1px solid rgba(207, 160, 84, 0.1);
+        }
+        .cta-strip p {
+            color: rgba(255,255,255,0.7);
+            font-size: 18px;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        
+        /* ========== LEADERBOARD ========== */
+        .leaderboard-table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .leaderboard-table th {
+            background: var(--brand-black);
+            color: #fff;
+            padding: 15px 20px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+        }
+        .leaderboard-table th:last-child { text-align: center; }
+        .leaderboard-table td { padding: 18px 20px; border-bottom: 1px solid #eee; }
+        .leaderboard-table td:last-child { text-align: center; }
+        .leaderboard-table tr:hover { background: #faf9f7; }
+        
+        .rank-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .rank-1 { background: linear-gradient(135deg, #FFD700, #FFA500); color: #333; }
+        .rank-2 { background: linear-gradient(135deg, #C0C0C0, #A0A0A0); color: #333; }
+        .rank-3 { background: linear-gradient(135deg, #CD7F32, #A0522D); color: #fff; }
+        .rank-other { background: #eee; color: #666; }
+        
+        .partner-name { font-weight: 600; color: var(--text-dark); }
+        .partner-location { font-size: 13px; color: #999; margin-top: 2px; }
+        
+        .tier-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .tier-elite { background: var(--brand-black); color: var(--brand-gold); }
+        .tier-power { background: var(--brand-gold); color: var(--brand-black); }
+        .tier-growth { background: #E8F5E9; color: #2E7D32; }
+        .tier-registered { background: #E3F2FD; color: #1565C0; }
+        
+        .jobs-count { font-weight: 700; font-size: 18px; color: var(--brand-gold); }
+        .leaderboard-note { text-align: center; margin-top: 20px; font-size: 14px; color: #888; font-style: italic; }
+        
+        /* ========== BENEFIT CARDS ========== */
+        .benefit-card {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            text-align: left;
+            padding: 30px;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .benefit-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .benefit-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--brand-gold);
+            color: var(--brand-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .benefit-card p { color: var(--text-gray); font-size: 15px; margin: 0; }
+        
+        /* ========== STEPS ========== */
+        .steps-container { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+        .step { flex: 1; text-align: center; }
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: var(--brand-gold);
+            color: var(--brand-black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 auto 18px;
+        }
+        .step p { color: var(--text-gray); font-size: 15px; }
+        .step-arrow { color: var(--brand-gold); font-size: 28px; padding-top: 14px; opacity: 0.6; }
+        
+        /* ========== TIER CARDS - EARNED STATUS ========== */
+        .tier-card { 
+            background: #fff; 
+            padding: 30px 25px; 
+            text-align: left; 
+            border: 2px solid #eee;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .tier-card:hover { border-color: var(--brand-gold); }
+        .tier-card.elite { 
+            background: var(--brand-black); 
+            color: #fff; 
+            border-color: var(--brand-gold);
+        }
+        .tier-name { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+        .tier-card.elite .tier-name { color: var(--brand-gold); }
+        .tier-status { 
+            font-size: 13px; 
+            color: var(--text-gray); 
+            font-style: italic;
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+        .tier-card.elite .tier-status { color: rgba(255,255,255,0.6); }
+        .tier-divider {
+            width: 40px;
+            height: 2px;
+            background: var(--brand-gold);
+            margin-bottom: 18px;
+        }
+        .tier-perks { list-style: none; text-align: left; font-size: 14px; }
+        .tier-perks li { padding: 7px 0; padding-left: 22px; position: relative; color: var(--text-gray); }
+        .tier-perks li::before { content: '✓'; position: absolute; left: 0; color: #10b981; font-weight: 600; }
+        .tier-card.elite .tier-perks li { color: rgba(255,255,255,0.8); }
+        .tier-card.elite .tier-perks li::before { color: var(--brand-gold); }
+        
+        /* ========== CONTACT / FOOTER CTA ========== */
+        .contact-grid { display: flex; justify-content: center; gap: 60px; margin-top: 40px; }
+        .contact-item { text-align: center; }
+        .contact-label { font-size: 13px; opacity: 0.5; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .contact-value { font-size: 18px; font-weight: 600; }
+        .contact-value a { color: var(--brand-gold); text-decoration: none; }
+        .contact-value a:hover { text-decoration: underline; }
+        
+        /* ========== POPUP MODAL ========== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+        .modal-overlay.active { display: flex; align-items: flex-start; justify-content: center; }
+        .modal-content {
+            background: #fff;
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            animation: modalSlide 0.3s ease;
+        }
+        @keyframes modalSlide {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal-header {
+            background: var(--brand-black);
+            color: #fff;
+            padding: 25px 30px;
+            position: relative;
+        }
+        .modal-header h2 { font-size: 22px; text-align: left; margin: 0; }
+        .modal-header p { opacity: 0.6; margin: 5px 0 0 0; font-size: 14px; }
+        .modal-close {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .modal-close:hover { opacity: 1; }
+        .modal-body { padding: 30px; }
+        
+        .form-section { margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid #eee; }
+        .form-section:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .form-section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        .form-section-number {
+            background: var(--brand-gold);
+            color: var(--brand-black);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; color: var(--text-dark); }
+        .required { color: #e53935; }
+        
+        input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            font-size: 15px;
+            font-family: inherit;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus, textarea:focus { border-color: var(--brand-gold); outline: none; }
+        
+        .radio-group { display: flex; flex-wrap: wrap; gap: 10px; }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border: 2px solid #e0e0e0;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        .radio-option:hover { border-color: var(--brand-gold); }
+        
+        .checkbox-group {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            background: rgba(207, 160, 84, 0.08);
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid rgba(207, 160, 84, 0.3);
+        }
+        .checkbox-group input { margin-top: 3px; width: 18px; height: 18px; }
+        .checkbox-group label { margin: 0; font-weight: 500; font-size: 14px; }
+        
+        .submit-btn {
+            width: 100%;
+            background: var(--brand-gold);
+            color: var(--brand-black);
+            padding: 16px;
+            font-size: 15px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 20px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        .submit-btn:hover { background: var(--brand-gold-light); }
+        .form-note { text-align: center; font-size: 13px; color: #888; margin-top: 15px; }
+        
+        /* ========== STICKY MOBILE CTA ========== */
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--brand-black);
+            padding: 12px 20px;
+            z-index: 900;
+            border-top: 2px solid var(--brand-gold);
+            text-align: center;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+        }
+        .sticky-cta button {
+            width: 100%;
+            max-width: 400px;
+            background: var(--brand-gold);
+            color: var(--brand-black);
+            padding: 14px;
+            font-size: 14px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-family: inherit;
+        }
+        
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+            .prizes-grid { grid-template-columns: repeat(2, 1fr); align-items: stretch; }
+            .prize-card.featured { grid-column: 1 / -1; }
+            .leaderboard-table { font-size: 14px; }
+            .leaderboard-table th, .leaderboard-table td { padding: 12px 10px; }
+        }
+        
+        @media (max-width: 600px) {
+            .strip { padding: 60px 25px; }
+            .hero-strip { padding: 70px 25px 55px; }
+            .hero-strip h1 { font-size: 28px; }
+            .hero-strip .subtitle { font-size: 15px; }
+            h1 { font-size: 30px; }
+            h2 { font-size: 26px; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .prizes-grid { grid-template-columns: 1fr; }
+            .steps-container { flex-direction: column; }
+            .step-arrow { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+            .contact-grid { flex-direction: column; gap: 25px; }
+            .trust-row { flex-direction: column; gap: 12px; }
+            .radio-group { flex-direction: column; }
+            .radio-option { width: 100%; }
+            .leaderboard-table .hide-mobile { display: none; }
+            .cta-strip { padding: 40px 25px; }
+            .cta-strip p { font-size: 16px; }
+            
+            /* Show sticky CTA on mobile */
+            .sticky-cta { display: block; }
+            /* Add bottom padding so content isn't hidden behind sticky */
+            body { padding-bottom: 70px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================
+     STRIP 1: HERO
+============================================ -->
+<section class="hero-strip">
+    <div class="strip-content">
+        <div class="badge">Plumbers Only — Limited Spots</div>
+        <h1>Earn <span class="gold">$500</span> For Every<br>Water Job You Refer</h1>
+        <p class="subtitle">$100 per lead &nbsp;&#183;&nbsp; +$400 when it closes &nbsp;&#183;&nbsp; Annual grand prizes up to $55K</p>
+        <button class="btn-gold" onclick="window.parent.postMessage('openPartnerForm','*')">Apply Now</button>
+        <div class="trust-row">
+            <span class="trust-item">&#10003; Veteran-Owned</span>
+            <span class="trust-item">&#10003; IICRC Certified</span>
+            <span class="trust-item">&#10003; 24/7 Emergency Response</span>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     STRIP 2: GRAND PRIZES - PODIUM LAYOUT
+     Order: 2nd | 1st (elevated center) | 3rd
+============================================ -->
+<section class="strip dark-strip">
+    <div class="strip-content">
+        <div class="section-intro">
+            <h2>Annual Grand Prizes</h2>
+            <p style="color: #999;">Every Preferred Partner is eligible. Awarded at the <span class="gold">Partner Party — December 20th</span></p>
+        </div>
+        
+        <div class="prizes-grid">
+            <!-- 2nd Place - LEFT -->
+            <div class="prize-card">
+                <div class="prize-label">2nd Place</div>
+                <img src="https://static.wixstatic.com/media/0b5ede_bbf9cf88cea348238e1c5ce3af8fbcbe~mv2.jpg" 
+                     alt="ATV Package" 
+                     class="prize-image"
+                     onerror="this.style.background='rgba(207,160,84,0.1)';this.alt='[ATV Package Image]';">
+                <h3 class="prize-title">ATV Package</h3>
+                <div class="prize-value">Up to $5,000 Value</div>
+            </div>
+            
+            <!-- 1st Place - CENTER (featured/elevated) -->
+            <div class="prize-card featured">
+                <div class="prize-label">&#9733; 1st Place &#9733;</div>
+                <img src="https://static.wixstatic.com/media/0b5ede_1620fbd8f608439c84d8c9a76cfc51e6~mv2.avif" 
+                     alt="Pick Your Truck" 
+                     class="prize-image"
+                     onerror="this.style.background='rgba(207,160,84,0.1)';this.alt='[Work Truck Image]';">
+                <h3 class="prize-title">Pick Your Truck</h3>
+                <div class="prize-value">Up to $55,000 Value</div>
+                <p style="font-size: 12px; color: #999; margin-top: 8px;">Choose your own or we pick a brand new Chevy Silverado</p>
+            </div>
+            
+            <!-- 3rd Place - RIGHT -->
+            <div class="prize-card">
+                <div class="prize-label">3rd Place</div>
+                <img src="https://static.wixstatic.com/media/0b5ede_aedc45ecd42545a8b0cbbdc0d2f2e575~mv2.webp" 
+                     alt="Vacation Voucher" 
+                     class="prize-image"
+                     onerror="this.style.background='rgba(207,160,84,0.1)';this.alt='[Vacation Image]';">
+                <h3 class="prize-title">Vacation Voucher</h3>
+                <div class="prize-value">$3,000 Value</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     MID-PAGE CTA - Right after prizes
+============================================ -->
+<section class="cta-strip">
+    <p>Ready to start competing? Spots are limited.</p>
+    <button class="btn-gold" onclick="window.parent.postMessage('openPartnerForm','*')">Apply Now</button>
+</section>
+
+<!-- ============================================
+     STRIP 3: LEADERBOARD - 5 Companies
+============================================ -->
+<section class="strip light-strip">
+    <div class="strip-content">
+        <div class="section-intro">
+            <h2>Partner Leaderboard</h2>
+            <p>Updated every Friday &nbsp;&#183;&nbsp; Cutoff: December 19th at midnight &nbsp;&#183;&nbsp; Resets December 20th</p>
+        </div>
+        
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th style="width: 60px;">Rank</th>
+                    <th>Partner</th>
+                    <th style="width: 100px;">Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="rank-badge rank-1">1</span></td>
+                    <td>
+                        <div class="partner-name">Partner #047</div>
+                    </td>
+                    <td><span class="jobs-count">24</span></td>
+                </tr>
+                <tr>
+                    <td><span class="rank-badge rank-2">2</span></td>
+                    <td>
+                        <div class="partner-name">Partner #012</div>
+                    </td>
+                    <td><span class="jobs-count">19</span></td>
+                </tr>
+                <tr>
+                    <td><span class="rank-badge rank-3">3</span></td>
+                    <td>
+                        <div class="partner-name">Partner #031</div>
+                    </td>
+                    <td><span class="jobs-count">15</span></td>
+                </tr>
+                <tr>
+                    <td><span class="rank-badge rank-other">4</span></td>
+                    <td>
+                        <div class="partner-name">Partner #008</div>
+                    </td>
+                    <td><span class="jobs-count">11</span></td>
+                </tr>
+                <tr>
+                    <td><span class="rank-badge rank-other">5</span></td>
+                    <td>
+                        <div class="partner-name">Partner #023</div>
+                    </td>
+                    <td><span class="jobs-count">8</span></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p class="leaderboard-note">Your Partner # is private — only you know which one is yours.</p>
+    </div>
+</section>
+
+<!-- ============================================
+     STRIP 4: PREFERRED PARTNER PERKS
+============================================ -->
+<section class="strip white-strip">
+    <div class="strip-content">
+        <div class="section-intro">
+            <h2>Preferred Partner Perks</h2>
+            <p>You already get water calls. Let us help you maximize revenue from each one.</p>
+        </div>
+        
+        <div class="grid-2">
+            <div class="benefit-card">
+                <div class="benefit-icon">$</div>
+                <div>
+                    <h3>$500 Per Closed Job</h3>
+                    <p>$100 when you refer a qualified lead. Another $400 when we win the mitigation job. Paid via gift card within 30 days.</p>
+                </div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">&#8635;</div>
+                <div>
+                    <h3>Return Work Guaranteed</h3>
+                    <p>If we win the job, you're our plumber at that address for all future reconstruction and retail projects.</p>
+                </div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">&#9889;</div>
+                <div>
+                    <h3>Free Emergency Cleanup</h3>
+                    <p>If a loss happens on your job, we clean it up free. Need reconstruction too? Partners get 35% off.</p>
+                </div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">&#9733;</div>
+                <div>
+                    <h3>Annual Grand Prizes</h3>
+                    <p>Every partner competes for the top 3 prizes. December 20th Partner Party and award reveal.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     STRIP 5: HOW IT WORKS
+============================================ -->
+<section class="strip light-strip">
+    <div class="strip-content">
+        <div class="section-intro">
+            <h2>How It Works</h2>
+            <p>Simple process. Start earning in days, not weeks.</p>
+        </div>
+        
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Apply</h3>
+                <p>Fill out the quick application (3-5 minutes)</p>
+            </div>
+            <div class="step-arrow">&rarr;</div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Get Selected</h3>
+                <p>We review applications within 24-48 hours</p>
+            </div>
+            <div class="step-arrow">&rarr;</div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Start Earning</h3>
+                <p>Refer water jobs and get paid immediately</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tiers removed — single Preferred Partner level -->
+
+<!-- ============================================
+     STRIP 7: FINAL CTA
+============================================ -->
+<section class="strip dark-strip" style="text-align: center;">
+    <div class="strip-content">
+        <h2>Ready to <span class="gold">Start Earning</span>?</h2>
+        <p class="subtitle">Become a Preferred Partner today.</p>
+        <button class="btn-gold" onclick="window.parent.postMessage('openPartnerForm','*')">Apply Now</button>
+        <div style="margin-top: 20px;">
+            <a href="https://0b5ede69-f747-4d23-bfff-5c32b2c63e71.usrfiles.com/ugd/0b5ede_9b57ba2b0c734e409efb36883b99fea7.pdf" target="_blank" class="btn-outline" style="font-size: 12px; padding: 10px 28px; letter-spacing: 1px;">Terms & Conditions</a>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-item">
+                <div class="contact-label">Phone</div>
+                <div class="contact-value"><a href="tel:7194390611">719-439-0611</a></div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">Email</div>
+                <div class="contact-value"><a href="/cdn-cgi/l/email-protection#2f5f4e5d5b414a5d5c6f4c404249405d5b5d4a5c5b405d4e5b4640415c014c4042"><span class="__cf_email__" data-cfemail="cdbdacbfb9a3a8bfbe8daea2a0aba2bfb9bfa8beb9a2bfacb9a4a2a3bee3aea2a0">[email&#160;protected]</span></a></div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">Service Area</div>
+                <div class="contact-value">Colorado Springs & Surrounding</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Form handled by Wix Lightbox: "Preferred Partner Program Application" -->
+
+<!-- ============================================
+     STICKY MOBILE CTA
+============================================ -->
+<div class="sticky-cta" id="stickyCta">
+    <button onclick="window.parent.postMessage('openPartnerForm','*')">Apply Now — Limited Spots</button>
+</div>
+
+<script>
+    // Sticky CTA - show after scrolling past hero
+    (function() {
+        var sticky = document.getElementById('stickyCta');
+        var heroHeight = document.querySelector('.hero-strip').offsetHeight;
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > heroHeight) {
+                sticky.style.opacity = '1';
+                sticky.style.pointerEvents = 'auto';
+            } else {
+                sticky.style.opacity = '0';
+                sticky.style.pointerEvents = 'none';
+            }
+        });
+        
+        sticky.style.opacity = '0';
+        sticky.style.pointerEvents = 'none';
+        sticky.style.transition = 'opacity 0.3s';
+    })();
+</script>
+
+</body>
+</html>
