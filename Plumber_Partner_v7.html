@@ -554,7 +554,7 @@
         <div class="badge">Plumbers Only — Limited Spots</div>
         <h1>Earn <span class="gold">$500</span> For Every<br>Water Job You Refer</h1>
         <p class="subtitle">$100 per lead &nbsp;&#183;&nbsp; +$400 when it closes &nbsp;&#183;&nbsp; Annual grand prizes up to $55K</p>
-        <button class="btn-gold" onclick="window.parent.postMessage('openPartnerForm','*')">Apply Now</button>
+        <button class="btn-gold" onclick="openPartnerForm()">Apply Now</button>
         <div class="trust-row">
             <span class="trust-item">&#10003; Veteran-Owned</span>
             <span class="trust-item">&#10003; IICRC Certified</span>
@@ -617,7 +617,7 @@
 ============================================ -->
 <section class="cta-strip">
     <p>Ready to start competing? Spots are limited.</p>
-    <button class="btn-gold" onclick="window.parent.postMessage('openPartnerForm','*')">Apply Now</button>
+    <button class="btn-gold" onclick="openPartnerForm()">Apply Now</button>
 </section>
 
 <!-- ============================================
@@ -765,7 +765,7 @@
     <div class="strip-content">
         <h2>Ready to <span class="gold">Start Earning</span>?</h2>
         <p class="subtitle">Become a Preferred Partner today.</p>
-        <button class="btn-gold" onclick="window.parent.postMessage('openPartnerForm','*')">Apply Now</button>
+        <button class="btn-gold" onclick="openPartnerForm()">Apply Now</button>
         <div style="margin-top: 20px;">
             <a href="https://0b5ede69-f747-4d23-bfff-5c32b2c63e71.usrfiles.com/ugd/0b5ede_9b57ba2b0c734e409efb36883b99fea7.pdf" target="_blank" class="btn-outline" style="font-size: 12px; padding: 10px 28px; letter-spacing: 1px;">Terms & Conditions</a>
         </div>
@@ -787,21 +787,173 @@
     </div>
 </section>
 
-<!-- Form handled by Wix Lightbox: "Preferred Partner Program Application" -->
+<!-- ============================================
+     LIGHTBOX FORM: Preferred Partner Program Application
+============================================ -->
+<div class="modal-overlay" id="partnerFormModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Preferred Partner Program Application</h2>
+            <p>Join the team. Start earning in days.</p>
+            <button class="modal-close" onclick="closePartnerForm()" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="partnerApplicationForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <span class="form-section-number">1</span> Contact Information
+                    </div>
+                    <div class="form-group">
+                        <label for="fullName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" required placeholder="John Smith">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required placeholder="(719) 555-0100">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <span class="form-section-number">2</span> Company Details
+                    </div>
+                    <div class="form-group">
+                        <label for="companyName">Company Name <span class="required">*</span></label>
+                        <input type="text" id="companyName" name="companyName" required placeholder="ABC Plumbing LLC">
+                    </div>
+                    <div class="form-group">
+                        <label for="position">Position <span class="required">*</span></label>
+                        <select id="position" name="position" required>
+                            <option value="" disabled selected>Select your role</option>
+                            <option value="Owner">Owner</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Lead Technician">Lead Technician</option>
+                            <option value="Technician">Technician</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                        <label for="agreeTerms">I agree to the <a href="https://0b5ede69-f747-4d23-bfff-5c32b2c63e71.usrfiles.com/ugd/0b5ede_9b57ba2b0c734e409efb36883b99fea7.pdf" target="_blank" style="color: var(--brand-gold);">Terms & Conditions</a> of the Preferred Partner Program.</label>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                    <p class="form-note">We review applications within 24-48 hours. You'll receive a call from our team.</p>
+                </div>
+            </form>
+
+            <!-- Success message (hidden by default) -->
+            <div id="formSuccess" style="display: none; text-align: center; padding: 40px 20px;">
+                <div style="font-size: 48px; margin-bottom: 20px;">&#10003;</div>
+                <h2 style="font-size: 24px; text-align: center; margin-bottom: 10px; color: var(--text-dark);">Application Received!</h2>
+                <p style="color: var(--text-gray); font-size: 16px; margin-bottom: 8px;">Thank you for applying to the Preferred Partner Program.</p>
+                <p style="color: var(--text-gray); font-size: 15px;">Our team will contact you within <strong>24-48 hours</strong> to discuss next steps.</p>
+                <button class="btn-gold" style="margin-top: 25px;" onclick="closePartnerForm()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- ============================================
      STICKY MOBILE CTA
 ============================================ -->
 <div class="sticky-cta" id="stickyCta">
-    <button onclick="window.parent.postMessage('openPartnerForm','*')">Apply Now — Limited Spots</button>
+    <button onclick="openPartnerForm()">Apply Now — Limited Spots</button>
 </div>
 
 <script>
-    // Sticky CTA - show after scrolling past hero
+    // ========== LIGHTBOX FORM FUNCTIONS ==========
+    function openPartnerForm() {
+        var modal = document.getElementById('partnerFormModal');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePartnerForm() {
+        var modal = document.getElementById('partnerFormModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+
+        // Reset form and success state after close animation
+        setTimeout(function() {
+            var form = document.getElementById('partnerApplicationForm');
+            var success = document.getElementById('formSuccess');
+            form.style.display = '';
+            form.reset();
+            success.style.display = 'none';
+        }, 300);
+    }
+
+    // Close modal on overlay click (not content click)
+    document.getElementById('partnerFormModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closePartnerForm();
+        }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            var modal = document.getElementById('partnerFormModal');
+            if (modal.classList.contains('active')) {
+                closePartnerForm();
+            }
+        }
+    });
+
+    // ========== FORM SUBMISSION ==========
+    function handleFormSubmit(e) {
+        e.preventDefault();
+
+        var form = document.getElementById('partnerApplicationForm');
+        var success = document.getElementById('formSuccess');
+        var submitBtn = form.querySelector('.submit-btn');
+
+        // Disable button during submission
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+
+        // Collect form data
+        var formData = {
+            fullName: form.fullName.value,
+            email: form.email.value,
+            phone: form.phone.value,
+            companyName: form.companyName.value,
+            position: form.position.value
+        };
+
+        // Try to send via postMessage to Wix parent (if embedded)
+        try {
+            window.parent.postMessage({
+                type: 'partnerApplication',
+                data: formData
+            }, '*');
+        } catch(err) {
+            // Not in Wix iframe — that's OK
+        }
+
+        // Show success state after brief delay
+        setTimeout(function() {
+            form.style.display = 'none';
+            success.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Application';
+        }, 600);
+    }
+
+    // ========== STICKY CTA ==========
     (function() {
         var sticky = document.getElementById('stickyCta');
         var heroHeight = document.querySelector('.hero-strip').offsetHeight;
-        
+
         window.addEventListener('scroll', function() {
             if (window.scrollY > heroHeight) {
                 sticky.style.opacity = '1';
@@ -811,7 +963,7 @@
                 sticky.style.pointerEvents = 'none';
             }
         });
-        
+
         sticky.style.opacity = '0';
         sticky.style.pointerEvents = 'none';
         sticky.style.transition = 'opacity 0.3s';
