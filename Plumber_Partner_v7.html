@@ -369,6 +369,35 @@
             position: relative;
             animation: modalSlide 0.3s ease;
         }
+        .modal-content.modal-wide {
+            max-width: 900px;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .modal-content.modal-wide .modal-body {
+            flex: 1;
+            padding: 0;
+            overflow: hidden;
+        }
+        .modal-content.modal-wide .modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .tc-footer {
+            padding: 15px 30px;
+            background: #f5f5f3;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            font-size: 14px;
+        }
+        .tc-footer a {
+            color: var(--brand-gold);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .tc-footer a:hover { text-decoration: underline; }
         @keyframes modalSlide {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -767,7 +796,7 @@
         <p class="subtitle">Become a Preferred Partner today.</p>
         <button class="btn-gold" onclick="openPartnerForm()">Apply Now</button>
         <div style="margin-top: 20px;">
-            <a href="https://0b5ede69-f747-4d23-bfff-5c32b2c63e71.usrfiles.com/ugd/0b5ede_9b57ba2b0c734e409efb36883b99fea7.pdf" target="_blank" class="btn-outline" style="font-size: 12px; padding: 10px 28px; letter-spacing: 1px;">Terms & Conditions</a>
+            <button class="btn-outline" style="font-size: 12px; padding: 10px 28px; letter-spacing: 1px;" onclick="openTermsLightbox()">Terms & Conditions</button>
         </div>
         
         <div class="contact-grid">
@@ -933,6 +962,25 @@
 </div>
 
 <!-- ============================================
+     LIGHTBOX: Terms & Conditions PDF Viewer
+============================================ -->
+<div class="modal-overlay" id="termsModal">
+    <div class="modal-content modal-wide">
+        <div class="modal-header">
+            <h2>Terms & Conditions</h2>
+            <p>Preferred Partner Program</p>
+            <button class="modal-close" onclick="closeTermsLightbox()" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <iframe id="termsIframe" src="" title="Terms & Conditions PDF"></iframe>
+        </div>
+        <div class="tc-footer">
+            <a href="https://0b5ede69-f747-4d23-bfff-5c32b2c63e71.usrfiles.com/ugd/0b5ede_9b57ba2b0c734e409efb36883b99fea7.pdf" target="_blank">Download PDF</a>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
      STICKY MOBILE CTA
 ============================================ -->
 <div class="sticky-cta" id="stickyCta">
@@ -969,13 +1017,43 @@
         }
     });
 
-    // Close modal on Escape key
+    // Close modals on Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            var modal = document.getElementById('partnerFormModal');
-            if (modal.classList.contains('active')) {
+            var formModal = document.getElementById('partnerFormModal');
+            var termsModal = document.getElementById('termsModal');
+            if (termsModal.classList.contains('active')) {
+                closeTermsLightbox();
+            } else if (formModal.classList.contains('active')) {
                 closePartnerForm();
             }
+        }
+    });
+
+    // ========== TERMS & CONDITIONS LIGHTBOX ==========
+    var termsUrl = 'https://0b5ede69-f747-4d23-bfff-5c32b2c63e71.usrfiles.com/ugd/0b5ede_9b57ba2b0c734e409efb36883b99fea7.pdf';
+
+    function openTermsLightbox() {
+        var modal = document.getElementById('termsModal');
+        var iframe = document.getElementById('termsIframe');
+        iframe.src = termsUrl;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeTermsLightbox() {
+        var modal = document.getElementById('termsModal');
+        var iframe = document.getElementById('termsIframe');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        // Unload the PDF when closed
+        setTimeout(function() { iframe.src = ''; }, 300);
+    }
+
+    // Close T&C modal on overlay click
+    document.getElementById('termsModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeTermsLightbox();
         }
     });
 
