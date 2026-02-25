@@ -1,36 +1,30 @@
-import { submitPartnerApplication } from 'backend/partnerSubmit.jsw';
+import wixWindow from 'wix-window';
 
 $w.onReady(function () {
-    $w('#html12').onMessage((event) => {
-        if (event.data && event.data.type === 'partnerApplication') {
-            const formData = event.data.data;
 
-            const record = {
-                title: formData.firstName + ' ' + formData.lastName,
-                firstName: formData.firstName,
-                lastName: formData.lastName,
-                companyName: formData.companyName || '',
-                applyingAs: formData.applyingAs,
-                phone: formData.phone,
-                email: formData.email,
-                address: formData.address || '',
-                industryYears: formData.industryYears,
-                authorized: formData.authorized,
-                understandW9: formData.understandW9,
-                exclusiveReferrals: formData.exclusiveReferrals,
-                monthlyCallVolume: formData.monthlyCallVolume,
-                onboardingAcknowledge: formData.onboardingAcknowledge,
-                submittedAt: new Date()
-            };
+    // ── Helper to open the lightbox ──
+    function openForm() {
+        wixWindow.openLightbox('Partner Application');
+    }
 
-            submitPartnerApplication(record)
-                .then(() => {
-                    $w('#html12').postMessage({ type: 'formResult', success: true });
-                })
-                .catch((err) => {
-                    console.error('Error saving partner application:', err);
-                    $w('#html12').postMessage({ type: 'formResult', success: false });
-                });
-        }
+    // ── Native Wix "Apply Now" buttons ──
+    // Place up to 3 buttons on the page with these IDs.
+    // If you only have one button, only #buttonApply is needed.
+    ['#buttonApply', '#buttonApply2', '#buttonApply3'].forEach((id) => {
+        try { $w(id).onClick(openForm); } catch (e) { /* element not on page */ }
+    });
+
+    // ── HTML embed message listener (backup) ──
+    // If you embed the partner page HTML in an HtmlComponent,
+    // clicking "Apply Now" inside it sends a postMessage.
+    // This listens on every HtmlComponent on the page.
+    ['#html1', '#html2', '#htmlEmbed'].forEach((id) => {
+        try {
+            $w(id).onMessage((event) => {
+                if (event.data === 'openPartnerForm') {
+                    openForm();
+                }
+            });
+        } catch (e) { /* element not on page */ }
     });
 });
