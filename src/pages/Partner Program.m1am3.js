@@ -1,30 +1,67 @@
+// ─────────────────────────────────────────────────────────
+// Partner Program Page — Wix Velo Page Code
+// ─────────────────────────────────────────────────────────
+// Layout: The page is built with a mix of native Wix
+// sections (Hero, Mid-CTA, Final CTA) and HTML embeds
+// (Prizes, Leaderboard, Perks, How It Works).
+//
+// CTA buttons are native Wix buttons so they can call
+// wixWindow.openLightbox() directly — no postMessage needed.
+//
+// NATIVE WIX ELEMENTS (set these IDs in the Wix Editor):
+//   Hero section:
+//     #buttonApply           — "Apply Now" hero button
+//   Mid-page CTA section:
+//     #buttonApplyMid        — "Apply Now" mid-page button
+//   Final CTA section:
+//     #buttonApplyFinal      — "Apply Now" final button
+//     #buttonTerms           — "Terms & Conditions" button
+//
+// HTML EMBED ELEMENTS (set these IDs in the Wix Editor):
+//   #htmlPrizes             — Grand Prizes embed
+//   #htmlLeaderboard        — Leaderboard embed
+//   #htmlPerks              — Perks embed
+//   #htmlHowItWorks         — How It Works embed
+// ─────────────────────────────────────────────────────────
+
 import wixWindow from 'wix-window';
 
 $w.onReady(function () {
 
-    // ── Helper to open the lightbox ──
+    // ── Open Partner Application lightbox ──
     function openForm() {
         wixWindow.openLightbox('Partner Application');
     }
 
-    // ── Native Wix "Apply Now" buttons ──
-    // Place up to 3 buttons on the page with these IDs.
-    // If you only have one button, only #buttonApply is needed.
-    ['#buttonApply', '#buttonApply2', '#buttonApply3'].forEach((id) => {
-        try { $w(id).onClick(openForm); } catch (e) { /* element not on page */ }
-    });
+    // ── Hero CTA ──
+    $w('#buttonApply').onClick(openForm);
 
-    // ── HTML embed message listener (backup) ──
-    // If you embed the partner page HTML in an HtmlComponent,
-    // clicking "Apply Now" inside it sends a postMessage.
-    // This listens on every HtmlComponent on the page.
-    ['#html1', '#html2', '#htmlEmbed'].forEach((id) => {
+    // ── Mid-page CTA ──
+    try { $w('#buttonApplyMid').onClick(openForm); } catch (e) { /* not on page */ }
+
+    // ── Final CTA ──
+    try { $w('#buttonApplyFinal').onClick(openForm); } catch (e) { /* not on page */ }
+
+    // ── Terms & Conditions — opens in a new tab ──
+    try {
+        $w('#buttonTerms').onClick(() => {
+            wixWindow.openLightbox('Terms and Conditions');
+        });
+    } catch (e) { /* not on page */ }
+
+    // ── Load HTML embeds from public files ──
+    // Each embed is a self-contained content section with no CTA buttons.
+    // The src is set here so if you rename files you only change one place.
+    const embeds = {
+        '#htmlPrizes': '/partnerEmbed-prizes.html',
+        '#htmlLeaderboard': '/partnerEmbed-leaderboard.html',
+        '#htmlPerks': '/partnerEmbed-perks.html',
+        '#htmlHowItWorks': '/partnerEmbed-howItWorks.html'
+    };
+
+    Object.keys(embeds).forEach((id) => {
         try {
-            $w(id).onMessage((event) => {
-                if (event.data === 'openPartnerForm') {
-                    openForm();
-                }
-            });
-        } catch (e) { /* element not on page */ }
+            $w(id).src = embeds[id];
+        } catch (e) { /* embed not on page yet */ }
     });
 });
