@@ -1,8 +1,7 @@
-import wixData from 'wix-data';
+import { submitPartnerApplication } from 'backend/partnerSubmit.jsw';
 
 $w.onReady(function () {
     $w('#html12').onMessage((event) => {
-        // Handle partner application form submission
         if (event.data && event.data.type === 'partnerApplication') {
             const formData = event.data.data;
 
@@ -23,12 +22,13 @@ $w.onReady(function () {
                 submittedAt: new Date()
             };
 
-            wixData.insert('PartnerApplications', record)
+            submitPartnerApplication(record)
                 .then(() => {
-                    console.log('Partner application saved successfully.');
+                    $w('#html12').postMessage({ type: 'formResult', success: true });
                 })
                 .catch((err) => {
                     console.error('Error saving partner application:', err);
+                    $w('#html12').postMessage({ type: 'formResult', success: false });
                 });
         }
     });
