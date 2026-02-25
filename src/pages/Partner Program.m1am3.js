@@ -22,6 +22,7 @@
 //   #htmlLeaderboard        — Leaderboard embed
 //   #htmlPerks              — Perks embed
 //   #htmlHowItWorks         — How It Works embed
+//   #htmlFooter             — Footer info embed
 // ─────────────────────────────────────────────────────────
 
 import wixWindow from 'wix-window';
@@ -56,7 +57,8 @@ $w.onReady(function () {
         '#htmlPrizes': '/partnerEmbed-prizes.html',
         '#htmlLeaderboard': '/partnerEmbed-leaderboard.html',
         '#htmlPerks': '/partnerEmbed-perks.html',
-        '#htmlHowItWorks': '/partnerEmbed-howItWorks.html'
+        '#htmlHowItWorks': '/partnerEmbed-howItWorks.html',
+        '#htmlFooter': '/partnerEmbed-footer.html'
     };
 
     Object.keys(embeds).forEach((id) => {
