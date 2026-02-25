@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; background: #1a1a1a; color: #fff; }
+    :root {
+        --brand-gold: #CFA054;
+        --brand-gold-light: #DAAD64;
+        --brand-gold-dark: #B8893D;
+        --brand-black: #1a1a1a;
+    }
+    .gold { color: var(--brand-gold); }
+
+    .hero-strip {
+        background: var(--brand-black);
+        background-image:
+            radial-gradient(ellipse at 50% -10%, rgba(207, 160, 84, 0.12) 0%, transparent 55%);
+        text-align: center;
+        padding: 90px 40px 70px;
+    }
+    .hero-strip h1 {
+        font-size: 44px;
+        color: #ffffff;
+        margin-bottom: 16px;
+    }
+    .hero-strip .subtitle {
+        font-size: 19px;
+        color: rgba(255,255,255,0.75);
+        margin-bottom: 35px;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+    }
+    .hero-strip .btn-gold {
+        font-size: 16px;
+        padding: 18px 50px;
+    }
+
+    .badge {
+        display: inline-block;
+        background: rgba(207, 160, 84, 0.15);
+        color: var(--brand-gold);
+        padding: 10px 25px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 25px;
+        border: 1px solid rgba(207, 160, 84, 0.3);
+    }
+
+    .btn-gold {
+        display: inline-block;
+        background: var(--brand-gold);
+        color: var(--brand-black);
+        padding: 16px 44px;
+        font-size: 15px;
+        font-weight: 700;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    .btn-gold:hover {
+        background: var(--brand-gold-light);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 20px rgba(207, 160, 84, 0.3);
+    }
+
+    .trust-row { display: flex; justify-content: center; gap: 35px; margin-top: 35px; font-size: 13px; color: rgba(255,255,255,0.45); letter-spacing: 0.5px; }
+    .trust-item { display: flex; align-items: center; gap: 8px; }
+
+    .strip-content { max-width: 980px; margin: 0 auto; }
+
+    @media (max-width: 600px) {
+        .hero-strip { padding: 70px 25px 55px; }
+        .hero-strip h1 { font-size: 28px; }
+        .hero-strip .subtitle { font-size: 15px; }
+        .trust-row { flex-direction: column; gap: 12px; }
+    }
+</style>
+</head>
+<body>
+
+<section class="hero-strip">
+    <div class="strip-content">
+        <div class="badge">Plumbers Only — Limited Spots</div>
+        <h1>Earn <span class="gold">$500</span> For Every<br>Water Job You Refer</h1>
+        <p class="subtitle">$100 per lead &nbsp;&#183;&nbsp; +$400 when it closes &nbsp;&#183;&nbsp; Annual grand prizes up to $55K</p>
+        <button class="btn-gold" onclick="window.parent.postMessage('openPartnerForm','*')">Apply Now</button>
+        <div class="trust-row">
+            <span class="trust-item">&#10003; Veteran-Owned</span>
+            <span class="trust-item">&#10003; IICRC Certified</span>
+            <span class="trust-item">&#10003; 24/7 Emergency Response</span>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
