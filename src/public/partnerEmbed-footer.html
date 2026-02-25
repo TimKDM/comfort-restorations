@@ -9,6 +9,7 @@
     body { font-family: 'Montserrat', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; background: #1a1a1a; color: #fff; }
     :root {
         --brand-gold: #CFA054;
+        --brand-gold-light: #DAAD64;
     }
 
     .footer-strip {
@@ -25,6 +26,12 @@
         color: var(--brand-gold);
         margin-bottom: 25px;
     }
+    .footer-strip h3 a {
+        color: var(--brand-gold);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    .footer-strip h3 a:hover { color: var(--brand-gold-light); }
     .footer-info {
         display: flex;
         justify-content: center;
@@ -57,7 +64,7 @@
 <body>
 
 <div class="footer-strip">
-    <h3>Terms &amp; Conditions</h3>
+    <h3><a href="https://0b5ede69-f747-4d23-bfff-5c32b2c63e71.usrfiles.com/ugd/0b5ede_9b57ba2b0c734e409efb36883b99fea7.pdf" target="_blank">Terms &amp; Conditions</a></h3>
     <div class="footer-info">
         <div class="footer-item">
             <label>Phone</label>
