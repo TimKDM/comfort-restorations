@@ -1,7 +1,7 @@
 import wixData from 'wix-data';
 
 $w.onReady(function () {
-    $w('#html1').onMessage((event) => {
+    $w('#html12').onMessage((event) => {
         // Handle partner application form submission
         if (event.data && event.data.type === 'partnerApplication') {
             const formData = event.data.data;
