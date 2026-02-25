@@ -1058,11 +1058,30 @@
     });
 
     // ========== FORM SUBMISSION ==========
+
+    // Listen for confirmation from Wix parent
+    window.addEventListener('message', function(event) {
+        if (event.data && event.data.type === 'formResult') {
+            var form = document.getElementById('partnerApplicationForm');
+            var success = document.getElementById('formSuccess');
+            var submitBtn = form.querySelector('.submit-btn');
+
+            if (event.data.success) {
+                form.style.display = 'none';
+                success.style.display = 'block';
+            } else {
+                alert('There was an error submitting your application. Please try again.');
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Application';
+        }
+    });
+
     function handleFormSubmit(e) {
         e.preventDefault();
 
         var form = document.getElementById('partnerApplicationForm');
-        var success = document.getElementById('formSuccess');
         var submitBtn = form.querySelector('.submit-btn');
 
         // Disable button during submission
@@ -1091,23 +1110,11 @@
             onboardingAcknowledge: form.onboardingAcknowledge.checked
         };
 
-        // Try to send via postMessage to Wix parent (if embedded)
-        try {
-            window.parent.postMessage({
-                type: 'partnerApplication',
-                data: formData
-            }, '*');
-        } catch(err) {
-            // Not in Wix iframe — that's OK
-        }
-
-        // Show success state after brief delay
-        setTimeout(function() {
-            form.style.display = 'none';
-            success.style.display = 'block';
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Submit Application';
-        }, 600);
+        // Send data to Wix parent for saving to collection
+        window.parent.postMessage({
+            type: 'partnerApplication',
+            data: formData
+        }, '*');
     }
 
     // ========== STICKY CTA ==========

@@ -1,0 +1,5 @@
+import wixData from 'wix-data';
+
+export function submitPartnerApplication(record) {
+    return wixData.insert('PartnerApplications', record, { suppressAuth: true });
+}
