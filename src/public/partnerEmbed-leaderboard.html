@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; background: #f5f5f3; color: #2d2d2d; }
+    :root {
+        --brand-gold: #CFA054;
+        --brand-black: #1a1a1a;
+        --text-dark: #2d2d2d;
+    }
+    h2 { font-size: 34px; font-weight: 700; margin-bottom: 15px; text-align: center; letter-spacing: -0.3px; }
+    p { font-size: 16px; margin-bottom: 15px; }
+    .section-intro { text-align: center; max-width: 600px; margin: 0 auto 50px; }
+    .strip-content { max-width: 980px; margin: 0 auto; padding: 80px 40px; }
+
+    .leaderboard-table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .leaderboard-table th {
+        background: var(--brand-black);
+        color: #fff;
+        padding: 15px 20px;
+        text-align: left;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 1.5px;
+    }
+    .leaderboard-table th:last-child { text-align: center; }
+    .leaderboard-table td { padding: 18px 20px; border-bottom: 1px solid #eee; }
+    .leaderboard-table td:last-child { text-align: center; }
+    .leaderboard-table tr:hover { background: #faf9f7; }
+
+    .rank-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        font-weight: 700;
+        font-size: 14px;
+    }
+    .rank-1 { background: linear-gradient(135deg, #FFD700, #FFA500); color: #333; }
+    .rank-2 { background: linear-gradient(135deg, #C0C0C0, #A0A0A0); color: #333; }
+    .rank-3 { background: linear-gradient(135deg, #CD7F32, #A0522D); color: #fff; }
+    .rank-other { background: #eee; color: #666; }
+
+    .partner-name { font-weight: 600; color: var(--text-dark); }
+    .jobs-count { font-weight: 700; font-size: 18px; color: var(--brand-gold); }
+    .leaderboard-note { text-align: center; margin-top: 20px; font-size: 14px; color: #888; font-style: italic; }
+
+    @media (max-width: 900px) {
+        .leaderboard-table { font-size: 14px; }
+        .leaderboard-table th, .leaderboard-table td { padding: 12px 10px; }
+    }
+    @media (max-width: 600px) {
+        .strip-content { padding: 60px 25px; }
+        h2 { font-size: 26px; }
+    }
+</style>
+</head>
+<body>
+
+<div class="strip-content">
+    <div class="section-intro">
+        <h2>Partner Leaderboard</h2>
+        <p>Updated every Friday &nbsp;&#183;&nbsp; Cutoff: December 19th at midnight &nbsp;&#183;&nbsp; Resets December 20th</p>
+    </div>
+
+    <table class="leaderboard-table">
+        <thead>
+            <tr>
+                <th style="width: 60px;">Rank</th>
+                <th>Partner</th>
+                <th style="width: 100px;">Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="rank-badge rank-1">1</span></td>
+                <td><div class="partner-name">Partner #047</div></td>
+                <td><span class="jobs-count">24</span></td>
+            </tr>
+            <tr>
+                <td><span class="rank-badge rank-2">2</span></td>
+                <td><div class="partner-name">Partner #012</div></td>
+                <td><span class="jobs-count">19</span></td>
+            </tr>
+            <tr>
+                <td><span class="rank-badge rank-3">3</span></td>
+                <td><div class="partner-name">Partner #031</div></td>
+                <td><span class="jobs-count">15</span></td>
+            </tr>
+            <tr>
+                <td><span class="rank-badge rank-other">4</span></td>
+                <td><div class="partner-name">Partner #008</div></td>
+                <td><span class="jobs-count">11</span></td>
+            </tr>
+            <tr>
+                <td><span class="rank-badge rank-other">5</span></td>
+                <td><div class="partner-name">Partner #023</div></td>
+                <td><span class="jobs-count">8</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="leaderboard-note">Your Partner # is private — only you know which one is yours.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; background: #ffffff; color: #2d2d2d; }
+    :root {
+        --brand-gold: #CFA054;
+        --brand-black: #1a1a1a;
+        --text-dark: #2d2d2d;
+        --text-gray: #666;
+    }
+    h2 { font-size: 34px; font-weight: 700; margin-bottom: 15px; text-align: center; letter-spacing: -0.3px; }
+    h3 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+    p { font-size: 16px; margin-bottom: 15px; }
+    .section-intro { text-align: center; max-width: 600px; margin: 0 auto 50px; }
+    .strip-content { max-width: 980px; margin: 0 auto; padding: 80px 40px; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    .benefit-card {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        text-align: left;
+        padding: 30px;
+        background: #fff;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        transition: all 0.3s;
+    }
+    .benefit-card:hover {
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        transform: translateY(-2px);
+    }
+    .benefit-icon {
+        width: 48px;
+        height: 48px;
+        background: var(--brand-gold);
+        color: var(--brand-black);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+    .benefit-card p { color: var(--text-gray); font-size: 15px; margin: 0; }
+
+    @media (max-width: 600px) {
+        .strip-content { padding: 60px 25px; }
+        h2 { font-size: 26px; }
+        .grid-2 { grid-template-columns: 1fr; }
+    }
+</style>
+</head>
+<body>
+
+<div class="strip-content">
+    <div class="section-intro">
+        <h2>Preferred Partner Perks</h2>
+        <p>You already get water calls. Let us help you maximize revenue from each one.</p>
+    </div>
+
+    <div class="grid-2">
+        <div class="benefit-card">
+            <div class="benefit-icon">$</div>
+            <div>
+                <h3>$500 Per Closed Job</h3>
+                <p>$100 when you refer a qualified lead. Another $400 when we win the mitigation job. Paid via gift card within 30 days.</p>
+            </div>
+        </div>
+        <div class="benefit-card">
+            <div class="benefit-icon">&#8635;</div>
+            <div>
+                <h3>Return Work Guaranteed</h3>
+                <p>If we win the job, you're our plumber at that address for all future reconstruction and retail projects.</p>
+            </div>
+        </div>
+        <div class="benefit-card">
+            <div class="benefit-icon">&#9889;</div>
+            <div>
+                <h3>Free Emergency Cleanup</h3>
+                <p>If a loss happens on your job, we clean it up free. Need reconstruction too? Partners get 35% off.</p>
+            </div>
+        </div>
+        <div class="benefit-card">
+            <div class="benefit-icon">&#9733;</div>
+            <div>
+                <h3>Annual Grand Prizes</h3>
+                <p>Every partner competes for the top 3 prizes. December 20th Partner Party and award reveal.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

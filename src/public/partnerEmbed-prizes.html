@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; background: #1a1a1a; color: #fff; }
+    :root {
+        --brand-gold: #CFA054;
+        --brand-gold-light: #DAAD64;
+    }
+    h2 { font-size: 34px; font-weight: 700; margin-bottom: 15px; text-align: center; letter-spacing: -0.3px; }
+    p { font-size: 16px; margin-bottom: 15px; }
+    .gold { color: var(--brand-gold); }
+    .section-intro { text-align: center; max-width: 600px; margin: 0 auto 50px; }
+    .strip-content { max-width: 980px; margin: 0 auto; padding: 80px 40px; }
+
+    .prizes-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.15fr 1fr;
+        gap: 25px;
+        align-items: end;
+    }
+    .prize-card {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(207, 160, 84, 0.2);
+        padding: 28px 20px;
+        text-align: center;
+        transition: all 0.3s;
+    }
+    .prize-card:hover { border-color: rgba(207, 160, 84, 0.5); }
+    .prize-card.featured {
+        border-color: var(--brand-gold);
+        background: rgba(207, 160, 84, 0.08);
+        padding: 35px 20px;
+        box-shadow: 0 0 40px rgba(207, 160, 84, 0.1);
+    }
+    .prize-label {
+        color: var(--brand-gold);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+    .prize-image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        margin-bottom: 18px;
+        border: 1px solid rgba(207, 160, 84, 0.15);
+        background: rgba(255,255,255,0.05);
+    }
+    .prize-card.featured .prize-image { height: 170px; border-color: rgba(207, 160, 84, 0.3); }
+    .prize-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+    .prize-value { color: var(--brand-gold); font-size: 17px; font-weight: 700; }
+
+    @media (max-width: 900px) {
+        .prizes-grid { grid-template-columns: repeat(2, 1fr); align-items: stretch; }
+        .prize-card.featured { grid-column: 1 / -1; }
+    }
+    @media (max-width: 600px) {
+        .strip-content { padding: 60px 25px; }
+        h2 { font-size: 26px; }
+        .prizes-grid { grid-template-columns: 1fr; }
+    }
+</style>
+</head>
+<body>
+
+<div class="strip-content">
+    <div class="section-intro">
+        <h2>Annual Grand Prizes</h2>
+        <p style="color: #999;">Every Preferred Partner is eligible. Awarded at the <span class="gold">Partner Party — December 20th</span></p>
+    </div>
+
+    <div class="prizes-grid">
+        <!-- 2nd Place - LEFT -->
+        <div class="prize-card">
+            <div class="prize-label">2nd Place</div>
+            <img src="https://static.wixstatic.com/media/0b5ede_bbf9cf88cea348238e1c5ce3af8fbcbe~mv2.jpg"
+                 alt="ATV Package"
+                 class="prize-image"
+                 onerror="this.style.background='rgba(207,160,84,0.1)';this.alt='[ATV Package Image]';">
+            <h3 class="prize-title">ATV Package</h3>
+            <div class="prize-value">Up to $5,000 Value</div>
+        </div>
+
+        <!-- 1st Place - CENTER (featured/elevated) -->
+        <div class="prize-card featured">
+            <div class="prize-label">&#9733; 1st Place &#9733;</div>
+            <img src="https://static.wixstatic.com/media/0b5ede_1620fbd8f608439c84d8c9a76cfc51e6~mv2.avif"
+                 alt="Pick Your Truck"
+                 class="prize-image"
+                 onerror="this.style.background='rgba(207,160,84,0.1)';this.alt='[Work Truck Image]';">
+            <h3 class="prize-title">Pick Your Truck</h3>
+            <div class="prize-value">Up to $55,000 Value</div>
+            <p style="font-size: 12px; color: #999; margin-top: 8px;">Choose your own or we pick a brand new Chevy Silverado</p>
+        </div>
+
+        <!-- 3rd Place - RIGHT -->
+        <div class="prize-card">
+            <div class="prize-label">3rd Place</div>
+            <img src="https://static.wixstatic.com/media/0b5ede_aedc45ecd42545a8b0cbbdc0d2f2e575~mv2.webp"
+                 alt="Vacation Voucher"
+                 class="prize-image"
+                 onerror="this.style.background='rgba(207,160,84,0.1)';this.alt='[Vacation Image]';">
+            <h3 class="prize-title">Vacation Voucher</h3>
+            <div class="prize-value">$3,000 Value</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
