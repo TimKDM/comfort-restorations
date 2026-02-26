@@ -464,7 +464,7 @@
         @media (max-width: 900px) {
             .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
             .prizes-grid { grid-template-columns: repeat(2, 1fr); align-items: stretch; }
-            .prize-card.featured { grid-column: 1 / -1; }
+            .prize-card.featured { grid-column: 1 / -1; order: -1; }
             .leaderboard-table { font-size: 14px; }
             .leaderboard-table th, .leaderboard-table td { padding: 12px 10px; }
         }
@@ -478,6 +478,7 @@
             h2 { font-size: 26px; }
             .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
             .prizes-grid { grid-template-columns: 1fr; }
+            .prize-card.featured { order: -1; }
             .steps-container { flex-direction: column; }
             .step-arrow { display: none; }
             .contact-grid { flex-direction: column; gap: 25px; }
