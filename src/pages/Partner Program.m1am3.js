@@ -4,13 +4,13 @@
 // Paste this into the Partner Program page code in Wix
 // Editor → Dev Mode → Page Code.
 //
-// HTML EMBED IDs (set in the Wix Editor Properties panel):
-//   #htmlHero         — Hero section        (sends openPartnerForm)
-//   #htmlPrizes       — Grand Prizes section
-//   #htmlLeaderboard  — Leaderboard section
-//   #htmlPerks        — Perks section
-//   #htmlHowItWorks   — How It Works section (sends openPartnerForm)
-//   #htmlFooter       — Footer section
+// HTML EMBED IDs (Wix auto-assigns numbered IDs):
+//   #html1  — Hero section
+//   #html2  — Grand Prizes section
+//   #html3  — Leaderboard section
+//   #html4  — Perks section
+//   #html5  — How It Works section
+//   #html6  — Footer section
 //
 // FULL-HEIGHT MOBILE SETUP:
 //   Wix doesn't support setting HtmlComponent height from
@@ -21,32 +21,26 @@
 //   In the Wix Editor, for each HtmlComponent:
 //     1. Click the embed → Settings → turn Scrolling OFF
 //     2. Set the height (px) to at least these values:
-//        #htmlHero         ~450px
-//        #htmlPrizes       ~950px  (3 cards stacked on mobile)
-//        #htmlHowItWorks   ~700px  (3 steps + Apply button)
-//        #htmlPerks        ~750px  (4 cards stacked)
-//        #htmlLeaderboard  ~600px  (table + note)
-//        #htmlFooter       ~250px  (contact info)
+//        #html1  ~450px  (Hero)
+//        #html2  ~950px  (Prizes — 3 cards stacked on mobile)
+//        #html3  ~600px  (Leaderboard — table + note)
+//        #html4  ~750px  (Perks — 4 cards stacked)
+//        #html5  ~650px  (How It Works — 3 steps)
+//        #html6  ~250px  (Footer — contact info)
 //     3. Click Preview → open browser console (F12) to see
 //        exact heights logged below, then fine-tune.
 // ─────────────────────────────────────────────────────────
 
-import wixWindow from 'wix-window';
-
 $w.onReady(function () {
-
-    function openForm() {
-        wixWindow.openLightbox('Partner Application');
-    }
 
     // Section embeds and their public file paths
     const embeds = {
-        '#htmlHero':        '/partnerEmbed-hero.html',
-        '#htmlPrizes':      '/partnerEmbed-prizes.html',
-        '#htmlLeaderboard': '/partnerEmbed-leaderboard.html',
-        '#htmlPerks':       '/partnerEmbed-perks.html',
-        '#htmlHowItWorks':  '/partnerEmbed-howItWorks.html',
-        '#htmlFooter':      '/partnerEmbed-footer.html'
+        '#html1': '/partnerEmbed-hero.html',
+        '#html2': '/partnerEmbed-prizes.html',
+        '#html3': '/partnerEmbed-leaderboard.html',
+        '#html4': '/partnerEmbed-perks.html',
+        '#html5': '/partnerEmbed-howItWorks.html',
+        '#html6': '/partnerEmbed-footer.html'
     };
 
     Object.keys(embeds).forEach((id) => {
@@ -54,18 +48,11 @@ $w.onReady(function () {
             const el = $w(id);
             el.src = embeds[id];
 
+            // Each embed reports its content height on load/resize.
+            // Check browser console in Preview to get exact values,
+            // then set the HtmlComponent height in the Editor to match.
             el.onMessage((event) => {
-                if (!event.data) return;
-
-                // "Apply Now" buttons inside hero & howItWorks embeds
-                if (event.data.type === 'openPartnerForm') {
-                    openForm();
-                }
-
-                // Each embed reports its content height on load/resize.
-                // Check browser console in Preview to get exact values,
-                // then set the HtmlComponent height in the Editor to match.
-                if (event.data.type === 'setHeight') {
+                if (event.data && event.data.type === 'setHeight') {
                     console.log(id + ' content height: ' + event.data.height + 'px');
                 }
             });

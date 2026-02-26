@@ -37,28 +37,6 @@
     .step p { color: var(--text-gray); font-size: 15px; }
     .step-arrow { color: var(--brand-gold); font-size: 28px; padding-top: 14px; opacity: 0.6; }
 
-    .cta-wrap { text-align: center; margin-top: 40px; }
-    .btn-gold {
-        display: inline-block;
-        background: var(--brand-gold);
-        color: var(--brand-black);
-        padding: 16px 44px;
-        font-size: 15px;
-        font-weight: 700;
-        text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-family: inherit;
-    }
-    .btn-gold:hover {
-        background: #DAAD64;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 20px rgba(207, 160, 84, 0.3);
-    }
-
     @media (max-width: 768px) {
         .strip-content { padding: 45px 30px; }
         h2 { font-size: 28px; }
@@ -107,10 +85,6 @@
             <h3>Start Earning</h3>
             <p>Refer water jobs and get paid immediately</p>
         </div>
-    </div>
-
-    <div class="cta-wrap">
-        <button class="btn-gold" onclick="window.parent.postMessage({type:'openPartnerForm'},'*')">Apply Now</button>
     </div>
 </div>
 
