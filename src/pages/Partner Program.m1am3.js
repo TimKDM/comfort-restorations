@@ -13,11 +13,6 @@
 //   #html6  — Footer section
 //
 // FULL-HEIGHT MOBILE SETUP:
-//   Wix doesn't support setting HtmlComponent height from
-//   Velo code. Each embed reports its content height via
-//   postMessage — the console.log below prints the real
-//   value so you can set the right height in the Editor.
-//
 //   In the Wix Editor, for each HtmlComponent:
 //     1. Click the embed → Settings → turn Scrolling OFF
 //     2. Set the height (px) to at least these values:
@@ -27,8 +22,6 @@
 //        #html4  ~750px  (Perks — 4 cards stacked)
 //        #html5  ~650px  (How It Works — 3 steps)
 //        #html6  ~250px  (Footer — contact info)
-//     3. Click Preview → open browser console (F12) to see
-//        exact heights logged below, then fine-tune.
 // ─────────────────────────────────────────────────────────
 
 $w.onReady(function () {
@@ -45,17 +38,7 @@ $w.onReady(function () {
 
     Object.keys(embeds).forEach((id) => {
         try {
-            const el = $w(id);
-            el.src = embeds[id];
-
-            // Each embed reports its content height on load/resize.
-            // Check browser console in Preview to get exact values,
-            // then set the HtmlComponent height in the Editor to match.
-            el.onMessage((event) => {
-                if (event.data && event.data.type === 'setHeight') {
-                    console.log(id + ' content height: ' + event.data.height + 'px');
-                }
-            });
+            $w(id).src = embeds[id];
         } catch (e) { /* element not on page */ }
     });
 });
