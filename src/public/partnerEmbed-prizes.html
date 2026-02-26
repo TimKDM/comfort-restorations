@@ -63,7 +63,7 @@
 
     @media (max-width: 900px) {
         .prizes-grid { grid-template-columns: repeat(2, 1fr); align-items: stretch; gap: 20px; }
-        .prize-card.featured { grid-column: 1 / -1; }
+        .prize-card.featured { grid-column: 1 / -1; order: -1; }
     }
     @media (max-width: 768px) {
         .strip-content { padding: 45px 30px; }
@@ -80,6 +80,7 @@
         .strip-content { padding: 35px 20px; }
         h2 { font-size: 26px; }
         .prizes-grid { grid-template-columns: 1fr; gap: 16px; }
+        .prize-card.featured { order: -1; }
         .prize-card { padding: 20px 16px; }
         .prize-card.featured { padding: 24px 16px; }
         .prize-image { height: 160px; }
