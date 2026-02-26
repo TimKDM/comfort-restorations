@@ -767,6 +767,17 @@
 </div>
 
 <script>
+    // ========== AUTO-RESIZE IFRAME ==========
+    (function() {
+        function sendHeight() {
+            var h = document.documentElement.scrollHeight;
+            window.parent.postMessage({ type: 'setHeight', height: h }, '*');
+        }
+        window.addEventListener('load', sendHeight);
+        window.addEventListener('resize', sendHeight);
+        new MutationObserver(sendHeight).observe(document.body, { childList: true, subtree: true });
+    })();
+
     // ========== OPEN WIX LIGHTBOX ==========
     function openPartnerForm() {
         // Tell the Wix parent page to open the Partner Application Form lightbox
