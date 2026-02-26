@@ -55,9 +55,24 @@
     }
     .footer-item a:hover { color: var(--brand-gold); }
 
+    @media (max-width: 768px) {
+        .footer-strip { padding: 45px 30px; }
+        .footer-info { gap: 30px; }
+        .footer-strip h3 { font-size: 15px; letter-spacing: 1.5px; }
+    }
     @media (max-width: 600px) {
-        .footer-strip { padding: 40px 25px; }
-        .footer-info { flex-direction: column; gap: 20px; }
+        .footer-strip { padding: 35px 20px; }
+        .footer-info { flex-direction: column; gap: 18px; align-items: center; }
+        .footer-strip h3 { font-size: 14px; letter-spacing: 1px; margin-bottom: 20px; }
+        .footer-item { text-align: center; }
+        .footer-item a, .footer-item span { font-size: 14px; }
+    }
+    @media (max-width: 480px) {
+        .footer-strip { padding: 30px 16px; }
+        .footer-strip h3 { font-size: 13px; }
+        .footer-info { gap: 14px; }
+        .footer-item label { font-size: 10px; }
+        .footer-item a, .footer-item span { font-size: 13px; }
     }
 </style>
 </head>
