@@ -6,7 +6,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Montserrat', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; background: #1a1a1a; color: #fff; }
+    html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+    body { font-family: 'Montserrat', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; background: #1a1a1a; color: #fff; word-wrap: break-word; }
     :root {
         --brand-gold: #CFA054;
         --brand-gold-light: #DAAD64;
@@ -47,7 +48,7 @@
         border: 1px solid rgba(207, 160, 84, 0.3);
     }
 
-    .strip-content { max-width: 980px; margin: 0 auto; }
+    .strip-content { max-width: 980px; width: 100%; margin: 0 auto; }
 
     @media (max-width: 768px) {
         .hero-strip { padding: 80px 30px 60px; }
@@ -80,5 +81,8 @@
     </div>
 </section>
 
+<script>
+(function(){function sendHeight(){var h=document.documentElement.scrollHeight;window.parent.postMessage({type:'setHeight',height:h},'*');}window.addEventListener('load',sendHeight);window.addEventListener('resize',sendHeight);new MutationObserver(sendHeight).observe(document.body,{childList:true,subtree:true});})();
+</script>
 </body>
 </html>
