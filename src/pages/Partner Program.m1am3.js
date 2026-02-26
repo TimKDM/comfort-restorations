@@ -16,6 +16,7 @@
 //   #buttonTerms           — "Terms & Conditions" button (optional)
 //
 // HTML EMBED ELEMENTS (set these IDs in the Wix Editor):
+//   #htmlPartnerPage         — Full-page Partner embed (Plumber_Partner_v7)
 //   #htmlHero              — Hero embed (has Apply Now button)
 //   #htmlPrizes            — Grand Prizes embed
 //   #htmlLeaderboard       — Leaderboard embed
@@ -44,6 +45,15 @@ $w.onReady(function () {
             wixWindow.openLightbox('Terms and Conditions');
         });
     } catch (e) { /* not on page */ }
+
+    // ── Full-page embed: listen for CTA clicks ──
+    try {
+        $w('#htmlPartnerPage').onMessage((event) => {
+            if (event.data && event.data.type === 'openPartnerForm') {
+                openForm();
+            }
+        });
+    } catch (e) { /* full-page embed not on page */ }
 
     // ── Load HTML embeds from public files ──
     const embeds = {
