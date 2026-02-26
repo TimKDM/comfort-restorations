@@ -3,26 +3,25 @@
 // ─────────────────────────────────────────────────────────
 // Layout: The page is built with a mix of native Wix
 // sections (Hero, Mid-CTA, Final CTA) and HTML embeds
-// (Prizes, Leaderboard, Perks, How It Works).
+// (Hero, Prizes, Leaderboard, Perks, How It Works, Footer).
 //
-// CTA buttons are native Wix buttons so they can call
-// wixWindow.openLightbox() directly — no postMessage needed.
+// CTA buttons live both in native Wix elements and inside
+// HTML embeds. Embed buttons use postMessage to request
+// the lightbox; this controller listens via onMessage().
 //
 // NATIVE WIX ELEMENTS (set these IDs in the Wix Editor):
-//   Hero section:
-//     #buttonApply           — "Apply Now" hero button
-//   Mid-page CTA section:
-//     #buttonApplyMid        — "Apply Now" mid-page button
-//   Final CTA section:
-//     #buttonApplyFinal      — "Apply Now" final button
-//     #buttonTerms           — "Terms & Conditions" button
+//   #buttonApply           — "Apply Now" hero button (optional)
+//   #buttonApplyMid        — "Apply Now" mid-page button (optional)
+//   #buttonApplyFinal      — "Apply Now" final button (optional)
+//   #buttonTerms           — "Terms & Conditions" button (optional)
 //
 // HTML EMBED ELEMENTS (set these IDs in the Wix Editor):
-//   #htmlPrizes             — Grand Prizes embed
-//   #htmlLeaderboard        — Leaderboard embed
-//   #htmlPerks              — Perks embed
-//   #htmlHowItWorks         — How It Works embed
-//   #htmlFooter             — Footer info embed
+//   #htmlHero              — Hero embed (has Apply Now button)
+//   #htmlPrizes            — Grand Prizes embed
+//   #htmlLeaderboard       — Leaderboard embed
+//   #htmlPerks             — Perks embed
+//   #htmlHowItWorks        — How It Works embed (has Apply Now button)
+//   #htmlFooter            — Footer info embed
 // ─────────────────────────────────────────────────────────
 
 import wixWindow from 'wix-window';
@@ -34,16 +33,12 @@ $w.onReady(function () {
         wixWindow.openLightbox('Partner Application');
     }
 
-    // ── Hero CTA ──
-    $w('#buttonApply').onClick(openForm);
-
-    // ── Mid-page CTA ──
+    // ── Native Wix CTA buttons (optional — kept for backwards compat) ──
+    try { $w('#buttonApply').onClick(openForm); } catch (e) { /* not on page */ }
     try { $w('#buttonApplyMid').onClick(openForm); } catch (e) { /* not on page */ }
-
-    // ── Final CTA ──
     try { $w('#buttonApplyFinal').onClick(openForm); } catch (e) { /* not on page */ }
 
-    // ── Terms & Conditions — opens in a new tab ──
+    // ── Terms & Conditions ──
     try {
         $w('#buttonTerms').onClick(() => {
             wixWindow.openLightbox('Terms and Conditions');
@@ -51,9 +46,8 @@ $w.onReady(function () {
     } catch (e) { /* not on page */ }
 
     // ── Load HTML embeds from public files ──
-    // Each embed is a self-contained content section with no CTA buttons.
-    // The src is set here so if you rename files you only change one place.
     const embeds = {
+        '#htmlHero': '/partnerEmbed-hero.html',
         '#htmlPrizes': '/partnerEmbed-prizes.html',
         '#htmlLeaderboard': '/partnerEmbed-leaderboard.html',
         '#htmlPerks': '/partnerEmbed-perks.html',
@@ -63,7 +57,15 @@ $w.onReady(function () {
 
     Object.keys(embeds).forEach((id) => {
         try {
-            $w(id).src = embeds[id];
+            const el = $w(id);
+            el.src = embeds[id];
+
+            // Listen for CTA clicks from inside the embed
+            el.onMessage((event) => {
+                if (event.data && event.data.type === 'openPartnerForm') {
+                    openForm();
+                }
+            });
         } catch (e) { /* embed not on page yet */ }
     });
 });
