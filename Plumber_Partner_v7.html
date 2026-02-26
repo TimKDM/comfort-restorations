@@ -431,60 +431,6 @@
         .modal-close:hover { opacity: 1; }
         .modal-body { padding: 30px; }
         
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; color: var(--text-dark); }
-        .required { color: #e53935; }
-
-        input[type="text"], input[type="email"], input[type="tel"], select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            font-size: 15px;
-            font-family: inherit;
-            border-radius: 4px;
-            transition: border-color 0.3s;
-        }
-        input:focus, select:focus, textarea:focus { border-color: var(--brand-gold); outline: none; }
-
-        .checkbox-list { display: flex; flex-direction: column; gap: 8px; }
-        .checkbox-option {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: 400;
-            cursor: pointer;
-        }
-        .checkbox-option input[type="checkbox"] { width: 16px; height: 16px; margin: 0; }
-
-        .checkbox-group {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            padding: 15px 0;
-            margin-bottom: 5px;
-        }
-        .checkbox-group input { margin-top: 3px; width: 18px; height: 18px; }
-        .checkbox-group label { margin: 0; font-weight: 500; font-size: 14px; }
-
-        .submit-btn {
-            width: 100%;
-            background: var(--brand-gold);
-            color: var(--brand-black);
-            padding: 16px;
-            font-size: 15px;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-top: 20px;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-        .submit-btn:hover { background: var(--brand-gold-light); }
-        
         /* ========== STICKY MOBILE CTA ========== */
         .sticky-cta {
             display: none;
@@ -534,10 +480,8 @@
             .prizes-grid { grid-template-columns: 1fr; }
             .steps-container { flex-direction: column; }
             .step-arrow { display: none; }
-            .form-row { grid-template-columns: 1fr; }
             .contact-grid { flex-direction: column; gap: 25px; }
             .trust-row { flex-direction: column; gap: 12px; align-items: center; }
-            .checkbox-list { flex-direction: column; }
             .leaderboard-table .hide-mobile { display: none; }
             .cta-strip { padding: 40px 25px; }
             .cta-strip p { font-size: 16px; }
@@ -797,148 +741,6 @@
 </section>
 
 <!-- ============================================
-     LIGHTBOX FORM: Preferred Partner Program Application
-============================================ -->
-<div class="modal-overlay" id="partnerFormModal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2>Partner Application</h2>
-            <button class="modal-close" onclick="closePartnerForm()" aria-label="Close">&times;</button>
-        </div>
-        <div class="modal-body">
-            <form id="partnerApplicationForm" onsubmit="handleFormSubmit(event)">
-                <!-- Row 1: First name / Last name -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="firstName">First name <span class="required">*</span></label>
-                        <input type="text" id="firstName" name="firstName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last name <span class="required">*</span></label>
-                        <input type="text" id="lastName" name="lastName" required>
-                    </div>
-                </div>
-
-                <!-- Row 2: Company name / Phone -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="companyName">Company name</label>
-                        <input type="text" id="companyName" name="companyName">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                </div>
-
-                <!-- Row 3: Address (full width) -->
-                <div class="form-group">
-                    <label for="address">Address</label>
-                    <input type="text" id="address" name="address">
-                </div>
-
-                <!-- Row 4: Are you applying as / Email -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Are you applying as:</label>
-                        <div class="checkbox-list">
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="applyingAs" value="Business Entity">
-                                Business Entity (LLC / Corporation / Sole Proprietor)
-                            </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="applyingAs" value="Individual 1099">
-                                Individual 1099 Referral Partner
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email">
-                    </div>
-                </div>
-
-                <!-- Row 5: Industry experience / Monthly call volume -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="industryYears">How long have you been in the industry?</label>
-                        <input type="text" id="industryYears" name="industryYears">
-                    </div>
-                    <div class="form-group">
-                        <label for="monthlyCallVolume">Estimated number of insurance-related plumbing calls you handle per month:</label>
-                        <select id="monthlyCallVolume" name="monthlyCallVolume">
-                            <option value="" disabled selected></option>
-                            <option value="1-5">1 - 5</option>
-                            <option value="6-10">6 - 10</option>
-                            <option value="11-20">11 - 20</option>
-                            <option value="21-50">21 - 50</option>
-                            <option value="50+">50+</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Row 6: Authorized / Understand W-9 -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Are you authorized to refer restoration services on behalf of yourself or your company?</label>
-                        <div class="checkbox-list">
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="authorized" value="Yes"> Yes
-                            </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="authorized" value="No"> No
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Do you understand this is a 1099 referral partner program and a W-9 will be required prior to payout?</label>
-                        <div class="checkbox-list">
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="understandW9" value="Yes"> Yes
-                            </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="understandW9" value="No"> No
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Row 7: Exclusive referrals (full width) -->
-                <div class="form-group">
-                    <label>Do you agree that referrals must be exclusive in order to qualify for compensation?</label>
-                    <div class="checkbox-list">
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="exclusiveReferrals" value="Yes"> Yes
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="exclusiveReferrals" value="No"> No
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Row 8: Acknowledgment -->
-                <div class="checkbox-group">
-                    <input type="checkbox" id="onboardingAcknowledge" name="onboardingAcknowledge">
-                    <label for="onboardingAcknowledge">I understand that referrals only qualify after official onboarding and written approval from Comfort Restorations.</label>
-                </div>
-
-                <!-- Row 9: Submit -->
-                <button type="submit" class="submit-btn">Apply Now</button>
-            </form>
-
-            <!-- Success message (hidden by default) -->
-            <div id="formSuccess" style="display: none; text-align: center; padding: 40px 20px;">
-                <div style="font-size: 48px; margin-bottom: 20px;">&#10003;</div>
-                <h2 style="font-size: 24px; text-align: center; margin-bottom: 10px; color: var(--text-dark);">Application Received!</h2>
-                <p style="color: var(--text-gray); font-size: 16px; margin-bottom: 8px;">Thank you for applying to the Preferred Partner Program.</p>
-                <p style="color: var(--text-gray); font-size: 15px;">Our team will contact you within <strong>24-48 hours</strong> to discuss next steps.</p>
-                <button class="btn-gold" style="margin-top: 25px;" onclick="closePartnerForm()">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================
      LIGHTBOX: Terms & Conditions PDF Viewer
 ============================================ -->
 <div class="modal-overlay" id="termsModal">
@@ -965,44 +767,18 @@
 </div>
 
 <script>
-    // ========== LIGHTBOX FORM FUNCTIONS ==========
+    // ========== OPEN WIX LIGHTBOX ==========
     function openPartnerForm() {
-        var modal = document.getElementById('partnerFormModal');
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        // Tell the Wix parent page to open the Partner Application Form lightbox
+        window.parent.postMessage({ type: 'openPartnerForm' }, '*');
     }
 
-    function closePartnerForm() {
-        var modal = document.getElementById('partnerFormModal');
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-
-        // Reset form and success state after close animation
-        setTimeout(function() {
-            var form = document.getElementById('partnerApplicationForm');
-            var success = document.getElementById('formSuccess');
-            form.style.display = '';
-            form.reset();
-            success.style.display = 'none';
-        }, 300);
-    }
-
-    // Close modal on overlay click (not content click)
-    document.getElementById('partnerFormModal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closePartnerForm();
-        }
-    });
-
-    // Close modals on Escape key
+    // Close T&C modal on Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            var formModal = document.getElementById('partnerFormModal');
             var termsModal = document.getElementById('termsModal');
             if (termsModal.classList.contains('active')) {
                 closeTermsLightbox();
-            } else if (formModal.classList.contains('active')) {
-                closePartnerForm();
             }
         }
     });
@@ -1033,66 +809,6 @@
             closeTermsLightbox();
         }
     });
-
-    // ========== FORM SUBMISSION ==========
-
-    // Listen for confirmation from Wix parent
-    window.addEventListener('message', function(event) {
-        if (event.data && event.data.type === 'formResult') {
-            var form = document.getElementById('partnerApplicationForm');
-            var success = document.getElementById('formSuccess');
-            var submitBtn = form.querySelector('.submit-btn');
-
-            if (event.data.success) {
-                form.style.display = 'none';
-                success.style.display = 'block';
-            } else {
-                alert('There was an error submitting your application. Please try again.');
-            }
-
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Submit Application';
-        }
-    });
-
-    function handleFormSubmit(e) {
-        e.preventDefault();
-
-        var form = document.getElementById('partnerApplicationForm');
-        var submitBtn = form.querySelector('.submit-btn');
-
-        // Disable button during submission
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Submitting...';
-
-        // Collect form data (checkboxes can have multiple selections)
-        function getCheckedValues(name) {
-            var checked = form.querySelectorAll('input[name="' + name + '"]:checked');
-            return Array.prototype.map.call(checked, function(cb) { return cb.value; });
-        }
-
-        var formData = {
-            firstName: form.firstName.value,
-            lastName: form.lastName.value,
-            companyName: form.companyName.value,
-            applyingAs: getCheckedValues('applyingAs'),
-            phone: form.phone.value,
-            email: form.email.value,
-            address: form.address.value,
-            industryYears: form.industryYears.value,
-            authorized: getCheckedValues('authorized'),
-            understandW9: getCheckedValues('understandW9'),
-            exclusiveReferrals: getCheckedValues('exclusiveReferrals'),
-            monthlyCallVolume: form.monthlyCallVolume.value,
-            onboardingAcknowledge: form.onboardingAcknowledge.checked
-        };
-
-        // Send data to Wix parent for saving to collection
-        window.parent.postMessage({
-            type: 'partnerApplication',
-            data: formData
-        }, '*');
-    }
 
     // ========== STICKY CTA ==========
     (function() {
