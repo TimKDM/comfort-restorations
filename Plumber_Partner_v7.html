@@ -122,7 +122,7 @@
             background-image: 
                 radial-gradient(ellipse at 50% -10%, rgba(207, 160, 84, 0.12) 0%, transparent 55%);
             text-align: center;
-            padding: 90px 40px 70px;
+            padding: 90px 40px 35px;
         }
         .hero-strip h1 {
             font-size: 44px;
@@ -147,10 +147,11 @@
         /* ========== PRIZE CARDS - PODIUM ========== */
         .prizes-grid {
             display: grid;
-            grid-template-columns: 1fr 1.15fr 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 25px;
-            align-items: end;
+            align-items: stretch;
         }
+        .prize-card.featured { grid-column: 1 / -1; order: -1; }
         
         .prize-card {
             background: rgba(255,255,255,0.04);
@@ -471,7 +472,7 @@
         
         @media (max-width: 600px) {
             .strip { padding: 60px 25px; }
-            .hero-strip { padding: 70px 25px 55px; }
+            .hero-strip { padding: 70px 25px 28px; }
             .hero-strip h1 { font-size: 28px; }
             .hero-strip .subtitle { font-size: 15px; }
             h1 { font-size: 30px; }
