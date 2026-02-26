@@ -431,34 +431,11 @@
         .modal-close:hover { opacity: 1; }
         .modal-body { padding: 30px; }
         
-        .form-section { margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid #eee; }
-        .form-section:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .form-section-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--text-dark);
-        }
-        .form-section-number {
-            background: var(--brand-gold);
-            color: var(--brand-black);
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 700;
-        }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
         .form-group { margin-bottom: 15px; }
         label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; color: var(--text-dark); }
         .required { color: #e53935; }
-        
+
         input[type="text"], input[type="email"], input[type="tel"], select, textarea {
             width: 100%;
             padding: 12px;
@@ -469,33 +446,28 @@
             transition: border-color 0.3s;
         }
         input:focus, select:focus, textarea:focus { border-color: var(--brand-gold); outline: none; }
-        
-        .radio-group { display: flex; flex-wrap: wrap; gap: 10px; }
-        .radio-option {
+
+        .checkbox-list { display: flex; flex-direction: column; gap: 8px; }
+        .checkbox-option {
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 16px;
-            border: 2px solid #e0e0e0;
-            cursor: pointer;
-            border-radius: 4px;
             font-size: 14px;
-            transition: border-color 0.3s;
+            font-weight: 400;
+            cursor: pointer;
         }
-        .radio-option:hover { border-color: var(--brand-gold); }
-        
+        .checkbox-option input[type="checkbox"] { width: 16px; height: 16px; margin: 0; }
+
         .checkbox-group {
             display: flex;
             gap: 12px;
             align-items: flex-start;
-            background: rgba(207, 160, 84, 0.08);
-            padding: 15px;
-            border-radius: 4px;
-            border: 1px solid rgba(207, 160, 84, 0.3);
+            padding: 15px 0;
+            margin-bottom: 5px;
         }
         .checkbox-group input { margin-top: 3px; width: 18px; height: 18px; }
         .checkbox-group label { margin: 0; font-weight: 500; font-size: 14px; }
-        
+
         .submit-btn {
             width: 100%;
             background: var(--brand-gold);
@@ -512,7 +484,6 @@
             transition: all 0.3s;
         }
         .submit-btn:hover { background: var(--brand-gold-light); }
-        .form-note { text-align: center; font-size: 13px; color: #888; margin-top: 15px; }
         
         /* ========== STICKY MOBILE CTA ========== */
         .sticky-cta {
@@ -566,8 +537,7 @@
             .form-row { grid-template-columns: 1fr; }
             .contact-grid { flex-direction: column; gap: 25px; }
             .trust-row { flex-direction: column; gap: 12px; align-items: center; }
-            .radio-group { flex-direction: column; }
-            .radio-option { width: 100%; }
+            .checkbox-list { flex-direction: column; }
             .leaderboard-table .hide-mobile { display: none; }
             .cta-strip { padding: 40px 25px; }
             .cta-strip p { font-size: 16px; }
@@ -832,113 +802,72 @@
 <div class="modal-overlay" id="partnerFormModal">
     <div class="modal-content">
         <div class="modal-header">
-            <h2>Preferred Partner Program Application</h2>
-            <p>Join the team. Start earning in days.</p>
+            <h2>Partner Application</h2>
             <button class="modal-close" onclick="closePartnerForm()" aria-label="Close">&times;</button>
         </div>
         <div class="modal-body">
             <form id="partnerApplicationForm" onsubmit="handleFormSubmit(event)">
-                <!-- Section 1: Personal Info -->
-                <div class="form-section">
-                    <div class="form-section-title">
-                        <span class="form-section-number">1</span> Personal Information
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">First Name <span class="required">*</span></label>
-                            <input type="text" id="firstName" name="firstName" required placeholder="John">
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name <span class="required">*</span></label>
-                            <input type="text" id="lastName" name="lastName" required placeholder="Smith">
-                        </div>
+                <!-- Row 1: First name / Last name -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
                     </div>
                     <div class="form-group">
-                        <label for="companyName">Company Name</label>
-                        <input type="text" id="companyName" name="companyName" placeholder="ABC Plumbing LLC">
+                        <label for="lastName">Last name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+
+                <!-- Row 2: Company name / Phone -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="companyName">Company name</label>
+                        <input type="text" id="companyName" name="companyName">
                     </div>
                     <div class="form-group">
-                        <label>Are you applying as: <span class="required">*</span></label>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="applyingAs" value="Business Entity" required>
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                </div>
+
+                <!-- Row 3: Address (full width) -->
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address">
+                </div>
+
+                <!-- Row 4: Are you applying as / Email -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Are you applying as:</label>
+                        <div class="checkbox-list">
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="applyingAs" value="Business Entity">
                                 Business Entity (LLC / Corporation / Sole Proprietor)
                             </label>
-                            <label class="radio-option">
-                                <input type="radio" name="applyingAs" value="Individual 1099">
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="applyingAs" value="Individual 1099">
                                 Individual 1099 Referral Partner
                             </label>
                         </div>
                     </div>
-                </div>
-
-                <!-- Section 2: Contact Info -->
-                <div class="form-section">
-                    <div class="form-section-title">
-                        <span class="form-section-number">2</span> Contact Information
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="phone">Phone <span class="required">*</span></label>
-                            <input type="tel" id="phone" name="phone" required placeholder="(719) 555-0100">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" required placeholder="john@example.com">
-                        </div>
-                    </div>
                     <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" id="address" name="address" placeholder="123 Main St, Colorado Springs, CO 80903">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
                     </div>
                 </div>
 
-                <!-- Section 3: Experience & Qualifications -->
-                <div class="form-section">
-                    <div class="form-section-title">
-                        <span class="form-section-number">3</span> Experience & Qualifications
+                <!-- Row 5: Industry experience / Monthly call volume -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="industryYears">How long have you been in the industry?</label>
+                        <input type="text" id="industryYears" name="industryYears">
                     </div>
                     <div class="form-group">
-                        <label for="industryYears">How long have you been in the industry? <span class="required">*</span></label>
-                        <input type="text" id="industryYears" name="industryYears" required placeholder="e.g. 5 years">
-                    </div>
-                    <div class="form-group">
-                        <label>Are you authorized to refer restoration services on behalf of yourself or your company? <span class="required">*</span></label>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="authorized" value="Yes" required> Yes
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="authorized" value="No"> No
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Do you understand this is a 1099 referral partner program and a W-9 will be required prior to payout? <span class="required">*</span></label>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="understandW9" value="Yes" required> Yes
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="understandW9" value="No"> No
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Do you agree that referrals must be exclusive in order to qualify for compensation? <span class="required">*</span></label>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="exclusiveReferrals" value="Yes" required> Yes
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="exclusiveReferrals" value="No"> No
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="monthlyCallVolume">Estimated number of insurance-related plumbing calls you handle per month <span class="required">*</span></label>
-                        <select id="monthlyCallVolume" name="monthlyCallVolume" required>
-                            <option value="" disabled selected>Select an estimate</option>
+                        <label for="monthlyCallVolume">Estimated number of insurance-related plumbing calls you handle per month:</label>
+                        <select id="monthlyCallVolume" name="monthlyCallVolume">
+                            <option value="" disabled selected></option>
                             <option value="1-5">1 - 5</option>
                             <option value="6-10">6 - 10</option>
                             <option value="11-20">11 - 20</option>
@@ -948,15 +877,53 @@
                     </div>
                 </div>
 
-                <!-- Section 4: Acknowledgment & Submit -->
-                <div class="form-section">
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="onboardingAcknowledge" name="onboardingAcknowledge" required>
-                        <label for="onboardingAcknowledge">I understand that referrals only qualify after official onboarding and written approval from Comfort Restorations.</label>
+                <!-- Row 6: Authorized / Understand W-9 -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Are you authorized to refer restoration services on behalf of yourself or your company?</label>
+                        <div class="checkbox-list">
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="authorized" value="Yes"> Yes
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="authorized" value="No"> No
+                            </label>
+                        </div>
                     </div>
-                    <button type="submit" class="submit-btn">Apply Now</button>
-                    <p class="form-note">We review applications within 24-48 hours. You'll receive a call from our team.</p>
+                    <div class="form-group">
+                        <label>Do you understand this is a 1099 referral partner program and a W-9 will be required prior to payout?</label>
+                        <div class="checkbox-list">
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="understandW9" value="Yes"> Yes
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="understandW9" value="No"> No
+                            </label>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Row 7: Exclusive referrals (full width) -->
+                <div class="form-group">
+                    <label>Do you agree that referrals must be exclusive in order to qualify for compensation?</label>
+                    <div class="checkbox-list">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="exclusiveReferrals" value="Yes"> Yes
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="exclusiveReferrals" value="No"> No
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Row 8: Acknowledgment -->
+                <div class="checkbox-group">
+                    <input type="checkbox" id="onboardingAcknowledge" name="onboardingAcknowledge">
+                    <label for="onboardingAcknowledge">I understand that referrals only qualify after official onboarding and written approval from Comfort Restorations.</label>
+                </div>
+
+                <!-- Row 9: Submit -->
+                <button type="submit" class="submit-btn">Apply Now</button>
             </form>
 
             <!-- Success message (hidden by default) -->
@@ -1098,24 +1065,24 @@
         submitBtn.disabled = true;
         submitBtn.textContent = 'Submitting...';
 
-        // Collect form data
-        var applyingAs = form.querySelector('input[name="applyingAs"]:checked');
-        var authorized = form.querySelector('input[name="authorized"]:checked');
-        var understandW9 = form.querySelector('input[name="understandW9"]:checked');
-        var exclusiveReferrals = form.querySelector('input[name="exclusiveReferrals"]:checked');
+        // Collect form data (checkboxes can have multiple selections)
+        function getCheckedValues(name) {
+            var checked = form.querySelectorAll('input[name="' + name + '"]:checked');
+            return Array.prototype.map.call(checked, function(cb) { return cb.value; });
+        }
 
         var formData = {
             firstName: form.firstName.value,
             lastName: form.lastName.value,
             companyName: form.companyName.value,
-            applyingAs: applyingAs ? applyingAs.value : '',
+            applyingAs: getCheckedValues('applyingAs'),
             phone: form.phone.value,
             email: form.email.value,
             address: form.address.value,
             industryYears: form.industryYears.value,
-            authorized: authorized ? authorized.value : '',
-            understandW9: understandW9 ? understandW9.value : '',
-            exclusiveReferrals: exclusiveReferrals ? exclusiveReferrals.value : '',
+            authorized: getCheckedValues('authorized'),
+            understandW9: getCheckedValues('understandW9'),
+            exclusiveReferrals: getCheckedValues('exclusiveReferrals'),
             monthlyCallVolume: form.monthlyCallVolume.value,
             onboardingAcknowledge: form.onboardingAcknowledge.checked
         };
