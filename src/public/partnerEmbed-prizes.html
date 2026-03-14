@@ -22,10 +22,11 @@
 
     .prizes-grid {
         display: grid;
-        grid-template-columns: 1fr 1.15fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 25px;
-        align-items: end;
+        align-items: stretch;
     }
+    .prize-card.featured { grid-column: 1 / -1; order: -1; }
     .prize-card {
         background: rgba(255,255,255,0.04);
         border: 1px solid rgba(207, 160, 84, 0.2);
